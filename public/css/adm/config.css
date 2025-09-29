@@ -1,0 +1,115 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+:root{
+    --primary-color: rgb(0, 0, 0);
+    --secondary-color: rgb(17, 17, 17);
+    --card-color: rgb(29, 29, 29);
+    --text-color: rgb(255, 255, 255);
+}
+
+body{
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+    font-size: 10px;
+    position: relative;
+}
+
+header a{
+    text-decoration: none;
+    color: red;
+    font-size: 14px;
+    position: absolute;
+    bottom: 16px;
+    right: 20px;
+    padding: 10px;
+}
+
+
+header h1 span{
+    color: red;
+}
+
+.back{
+    position: absolute;
+    top: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    left: 10px;
+    font-size: 13px;
+    background-color: rgb(27, 27, 27);
+}
+
+.back a{
+    text-decoration: none;
+    color: white;
+}
+
+
+main{
+    text-align: center;
+}
+
+main h4{
+    padding-top: 20px;
+}
+
+main form{
+    width: 200px;
+    margin: auto;
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+main form input{
+    outline: none;
+    border: none;
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+    color: white;
+    padding-left: 10px;
+    height: 30px;
+    font-size: 17px;
+    width: 250px;
+}
+
+main form button{
+    width: 100%;
+    height: 30px;
+    background-color: white;
+    border: none;
+    color: black;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+main form button:hover{
+    background-color: rgb(204, 204, 204);
+}
+
+main form p{
+    font-size: 13px;
+    color: rgb(97, 97, 97);
+}
+
+.confirm-remove{
+    background-color: green;
+    text-align: center;
+    padding: 15px;
+    font-size: 13px;
+}

@@ -1,0 +1,168 @@
+:root{
+    --primary-color: rgb(0, 0, 0);
+    --secondary-color: rgb(20, 20, 20);
+    --card-color: rgb(29, 29, 29);
+    --text-color: rgb(255, 255, 255);
+}
+
+
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body{
+    background-color: #000;
+}
+
+
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    background-color: var(--primary-color);
+}
+
+header .main-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    max-width: 1200px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+header .main-header .logo {
+    color: white;
+    position: absolute;
+    left: 50%; 
+    transform: translateX(-50%); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-tx {
+    line-height: 0.18;
+    text-align: center;
+    font-size: 30px;
+}
+
+.logo-tx h1{
+    font-weight: normal;
+    font-family: serif;
+}
+
+.s{
+    padding-right: 14px;
+}
+
+
+.button-voltar{
+    position: absolute;
+    top: 35px;
+    left: 24px;
+    padding: 5px;
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-voltar a{
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    color: var(--text-color);
+    padding: 10px;
+}
+
+
+.checkout-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #1a1a1a;
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.checkout-container h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.checkout-form {
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #ccc;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: #111;
+  color: #fff;
+  font-size: 14px;
+  transition: border 0.3s;
+}
+
+.form-group input:focus {
+  border: 1px solid #0f0;
+  outline: none;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 12px;
+  background: #0f0;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-submit:hover {
+  background: #0c0;
+}
+
+.pickup-link {
+  display: block;
+  margin-top: 15px;
+  color: #0af;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.pickup-link:hover {
+  text-decoration: underline;
+}

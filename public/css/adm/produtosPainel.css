@@ -1,0 +1,324 @@
+
+
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+:root{
+    --primary-color: rgb(0, 0, 0);
+    --secondary-color: rgb(17, 17, 17);
+    --card-color: rgb(29, 29, 29);
+    --text-color: rgb(255, 255, 255);
+}
+
+body{
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+    font-size: 10px;
+    position: relative;
+}
+
+header a{
+    text-decoration: none;
+    color: red;
+    font-size: 14px;
+    position: absolute;
+    bottom: 16px;
+    right: 20px;
+    padding: 10px;
+}
+
+
+header h1 span{
+    color: red;
+}
+
+.back{
+    position: absolute;
+    top: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    left: 10px;
+    font-size: 13px;
+    background-color: rgb(27, 27, 27);
+}
+
+.back a{
+    text-decoration: none;
+    color: white;
+}
+
+main{
+    background-color: var(--primary-color);
+    min-height: calc(100vh - 70px);
+}
+
+.titulo-main{
+    width: 100%;
+    text-align: center;
+    font-size: 10px;
+    padding: 20px;
+    color: rgba(255, 0, 0, 0.74);
+}
+
+.container-list{
+    padding: 20px;
+    margin: auto;
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+
+.produto{
+    background-color: black;
+    border: 1px solid rgb(49, 49, 49);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    text-align: center;
+}
+
+.aviso{
+    width: 140px;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+
+.aviso .esgot{
+    padding: 2px;
+    background-color: darkorange;
+    border-radius: 10px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.link-contatos{
+    width: 140px;
+    padding-top: 20px;
+    font-size: 14px;
+    margin: auto;
+    color: rgb(138, 138, 138);
+}
+
+.link-contatos p a{
+    color: rgb(42, 113, 219);
+}
+
+
+.img img{
+    width: 130px;
+}
+
+.buttons{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.buttons a{
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+}
+
+.trash{
+    background-color: red;
+}
+.pen{
+    background-color: green;
+}
+
+
+.confirm-remove{
+    background-color: rgb(0, 119, 128);
+    text-align: center;
+    padding: 15px;
+    font-size: 13px;
+}
+
+.erro-remove{
+    background-color: rgb(128, 0, 0);
+    text-align: center;
+    padding: 15px;
+    font-size: 13px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.adicionar{
+    background-color: rgb(20, 104, 65);
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.adicionar:hover{
+    background-color: rgb(16, 63, 41);
+}
+
+.adicionar a{
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+.ticket {
+    position: relative;
+    width: 300px;
+    height: 120px;
+    background: linear-gradient(to right, #ff0000, #0000ff);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* recortes em cima e embaixo (meio da div) */
+.ticket::before,
+.ticket::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: #000000;
+    /* mesma cor do fundo */
+    border-radius: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.ticket::before {
+    top: -20px;
+}
+
+.ticket::after {
+    bottom: -20px;
+}
+
+/* linha de picote (furinhos) */
+.cut-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.cut-line span {
+    width: 4px;
+    height: 4px;
+    background: #000000;
+    border-radius: 50%;
+    display: block;
+}
+
+.ticket .info {
+    position: absolute;
+    color: rgb(255, 255, 255);
+    top: 40px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 130px;
+}
+
+.ticket .info p {
+    color: rgb(207, 205, 205);
+    font-size: 14px;
+}
+
+
+.edit {
+    position: absolute;
+    color: rgb(255, 255, 255);
+    top: 20px;
+    right: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 130px;
+}
+
+.edit a{
+    text-decoration: none;
+    width: 100px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.edx {
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #ffffff;
+    background-color:#00a2ff;
+}
+
+.exx {
+    font-weight: bold;
+    color: #ffffff;
+    background-color:#ff0000;
+}
