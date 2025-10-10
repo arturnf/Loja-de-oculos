@@ -41,6 +41,10 @@ input[type="number"] {
     transition: border 0.2s;
 }
 
+.min-carrinho{
+    padding-top: 20px;
+}
+
 input:focus {
     border-color: #666;
 }

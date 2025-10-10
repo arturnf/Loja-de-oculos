@@ -59,6 +59,16 @@
                         <option value="1">Esgotado</option>
                     @endif
                 </select>
+                <select name="tipo" class="select tipo">
+                    <option value="">Selecione um Tipo</option>
+                    @foreach($tipo as $item)
+                        <option value="{{ $item->id }}" 
+                            @if($item->id == $produto->tipoproduto_id)
+                            selected
+                            @endif
+                        >{{ $item->nome }}</option>
+                    @endforeach
+                </select>
                 <button type="submit" class="botao">Atualizar</button>
             </form>
         </div>

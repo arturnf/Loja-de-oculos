@@ -1,8 +1,9 @@
 @extends('base.base')
 
-@section('title')
-<title>LisboaCompany - contatos</title>
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/contatos.css') }}?v=13">
 @endsection
+
 
 
 @section('content')

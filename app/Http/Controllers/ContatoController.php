@@ -25,7 +25,7 @@ class ContatoController extends Controller
             'produto_id' => $request->produto_id
         ]);
 
-        return redirect()->back()->with('success', 'contato enviado com sucesso');
+        return redirect()->back()->with('successContato', 'contato enviado com sucesso');
     }
 
 

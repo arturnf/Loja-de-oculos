@@ -1,7 +1,7 @@
 @extends('base.base')
 
-@section('title')
-<title>LisboaCompany - sobre</title>
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/sobre.css') }}?v=13">
 @endsection
 
 

@@ -29,12 +29,14 @@ class CupomController extends Controller
         if(Auth::check()){
             $request->validate([
                 'cupom' => 'required',
-                'desconto' => 'required'
+                'desconto' => 'required',
+                'quantidade_minima' => 'required'
             ]);
 
             Cupom::create([
                 'cupom' => $request->cupom,
-                'desconto' => $request->desconto
+                'desconto' => $request->desconto,
+                'quantidade_minima' => $request->quantidade_minima
             ]);
             return redirect()->route('lista.cupons')->with('success', 'Cupom Criado Com Sucesso!');
         }
@@ -75,13 +77,15 @@ class CupomController extends Controller
         if(Auth::check()){
             $request->validate([
                 'cupom' => 'required',
-                'desconto' => 'required'
+                'desconto' => 'required',
+                'quantidade_minima' => 'required'
             ]);
 
             $cupom = Cupom::find($id);
             $cupom->update([
                 'cupom' => $request->cupom,
-                'desconto' => $request->desconto
+                'desconto' => $request->desconto,
+                'quantidade_minima' => $request->quantidade_minima
             ]);
             return redirect()->route('lista.cupons')->with('success', 'Cupom editado Com Sucesso!');
         }

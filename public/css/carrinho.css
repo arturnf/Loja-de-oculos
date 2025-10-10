@@ -1,394 +1,356 @@
-:root{
-    --primary-color: rgb(0, 0, 0);
-    --secondary-color: rgb(20, 20, 20);
-    --card-color: rgb(29, 29, 29);
-    --text-color: rgb(255, 255, 255);
-}
-
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Inter", sans-serif;
-}
-
-body {
-    background-color: #000;
-}
-
-
-header{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100px;
-    background-color: var(--primary-color);
-}
-
-header .main-header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: absolute;
-    width: 100%;
-    max-width: 1200px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-
-header .main-header .logo {
-    color: white;
-    position: absolute;
-    left: 50%; 
-    transform: translateX(-50%); 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-.logo-tx {
-    line-height: 0.18;
-    text-align: center;
-    font-size: 30px;
-}
-
-.logo-tx h1{
-    font-weight: normal;
-    font-family: serif;
-}
-
-.s{
-    padding-right: 14px;
-}
-
-.button-voltar{
-    position: absolute;
-    top: 35px;
-    left: 24px;
-    padding: 5px;
-    background-color: var(--secondary-color);
-    border-radius: 10px;
-    height: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.button-voltar a{
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 15px;
-    color: var(--text-color);
-    padding: 10px;
-}
-
-
-
-
-
-/* Container da notificação */
-.notification {
-    position: fixed;
-    top: 30px;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #ffbf00;
-    /* vermelho de erro */
-    color: white;
-    text-align: center;
-    padding: 16px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    width: 90%;
-    max-width: 400px;
-    font-family: sans-serif;
-    z-index: 1000;
-    overflow: hidden;
-}
-
-/* Barra de progresso (fundo) */
-.progress-bar {
-    width: 100%;
-    height: 3px;
-    background-color: rgba(255, 255, 255, 0.3);
-    margin-top: 10px;
-    border-radius: 3px;
-    overflow: hidden;
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-}
-
-/* Barra de progresso (parte que enche) */
-.progress {
-    height: 100%;
-    width: 0%;
-    background-color: white;
-    transition: width linear;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.cart-container {
-    max-width: 400px;
-    margin: auto;
-    background: #111;
-    color: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    font-family: Arial, sans-serif;
-}
-
-.cart-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.cart-item {
-    display: flex;
-    align-items: center;
-    background: #1a1a1a;
-    padding: 10px;
-    margin-bottom: 12px;
-    border-radius: 10px;
-}
-
-.cart-img {
-    width: 80px;
-    height: 80px;
-    border-radius: 8px;
-    object-fit: cover;
-    margin-right: 12px;
-}
-
-.cart-details {
-    flex: 1;
-}
-
-.cart-details h3 {
-    margin: 0;
-    font-size: 16px;
-}
-
-.cart-details .price {
-    font-weight: bold;
-    color: #0f0;
-}
-
-.remove-btn {
-    background: none;
-    border: none;
-    color: #f55;
-    font-size: 20px;
-    cursor: pointer;
-    transition: transform 0.2s;
-    text-decoration: none;
-}
-
-.remove-btn:hover {
-    transform: scale(1.2);
-}
-
-.cart-summary {
-    background: #1a1a1a;
-    padding: 15px;
-    border-radius: 10px;
-}
-
-
-
-.coupon {
-  display: grid;
-  grid-template-columns: 80px minmax(0, 1fr); /* esquerdo fixo, direito encolhe */
-  max-width: 450px;
-  width: 100%;
-  border: 2px dashed #61d2ff;
-  border-radius: 12px;
-  overflow: hidden;
-  margin: 20px auto;
-  font-family: Arial, sans-serif;
-}
-
-.coupon-left {
-  background: #47a0c4;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 32px;
-}
-
-.coupon-right {
-  min-width: 0; /* importantíssimo no grid também */
-  padding: 15px 20px;
-}
-
-.coupon-input {
-    padding-top: 20px;
-  display: grid;
-  grid-template-columns: minmax(0,1fr) auto; /* input flexível + botão */
-}
-
-.coupon-input input {
-  width: 100%;
-  min-width: 0;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 6px 0 0 6px;
-  outline: none;
-}
-
-.coupon-input button {
-  padding: 0 10px;
-  border: 1px solid #61d2ff;
-  border-left: none;
-  border-radius: 0 6px 6px 0;
-  background: #61d2ff;
-  color: #fff;
-  font-weight: 700;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: background-color .3s;
-}
-
-.coupon-input button:hover {
-    background-color: #377c97;
-}
-
-
-
-
-
-
-
-.coupon-ap {
-    position: relative;
-    display: flex;
-    max-width: 450px;
-    border: 2px dashed #69e49c;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 20px auto;
-    font-family: Arial, sans-serif;
-}
-
-.trash-coupon {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
-
-.trash-coupon a{
-    text-decoration: none;
-    color: rgb(199, 199, 199);
-}
-
-.coupon-left-ap {
-    background-color: #69e49c;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 80px;
-    font-size: 32px;
-}
-
-.coupon-right-ap {
-    padding: 15px 20px;
-    flex: 1;
-}
-
-.coupon-right-ap h3 {
-    margin: 0;
-    font-size: 18px;
-}
-
-.coupon-right-ap p {
-    margin: 5px 0 10px;
-    font-size: 14px;
-    color: #555;
-}
-
-
-
-
-
-
-
-
-.checkout-btn {
-    display: block;
-    width: 100%;
-    text-align: center;
-    text-decoration: none;
-    background: #0f0;
-    color: #000;
-    font-weight: bold;
-    padding: 10px 40px 10px 40px;
-    border: none;
-    border-radius: 8px;
-    margin-top: 10px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.checkout-btn:hover {
-    background: #0c0;
-}
-
-.cart-summary p{
-    color: rgb(153, 153, 153);
-}
-
-.cart-summary p, .cart-summary h3, .cart-summary a{
-    margin-top: 10px;
-}
-
-
-.erro{
-    width: 100%;
-    background-color:#2b0909;
-    color: rgb(187, 116, 116);
-    margin-bottom: 20px;
-    text-align: center;
-    height: 40px;
-    font-size: 15px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-
-@media(max-width: 440px) {
-    .checkout-btn {
-        width: 100%;
-    }
-}
-
-
-@media(max-width: 400px) {
-    .coupon-left-ap {
-        display: none;
-    }
-}
+        * {
+            font-family: "Michroma", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #fafafa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .checkout-container {
+            max-width: 500px;
+            margin: auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .logo a {
+            color: black;
+            text-decoration: none;
+        }
+
+        /* Etapas */
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .steps::before {
+            content: "";
+            position: absolute;
+            top: 30%;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: #e0e0e0;
+            z-index: 0;
+        }
+
+        .step-active::before {
+            content: "";
+            position: absolute;
+            top: 30%;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: #000000;
+            z-index: -10;
+        }
+
+        .step,
+        .step-active {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            flex: 1;
+        }
+
+        .step span,
+        .step-active span {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            line-height: 28px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 6px;
+        }
+
+        .step-active.active span {
+            background: #000;
+            color: #fff;
+        }
+
+        .step p,
+        .step-active p {
+            font-size: 12px;
+            margin: 0;
+        }
+
+        /* Resumo */
+        .resumo {
+            margin-top: 40px;
+        }
+
+        .resumo h3 {
+            margin-bottom: 10px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .container-produto {
+            min-height: 200px;
+            margin-top: 10px;
+            margin-bottom: 70px;
+        }
+
+
+
+        .produto {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .trash-poduct {
+            position: absolute;
+            top: 0px;
+            right: 10px;
+        }
+
+        .trash-poduct a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .trash-poduct h1 {
+            font-size: 16px;
+        }
+
+        .info-produto {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .img-produto img {
+            width: 80px;
+            height: 100px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+
+        .nome-produto p {
+            font-size: 15px;
+        }
+
+        .preco-produto p {
+            color: rgb(66, 66, 66);
+            font-size: 13px;
+            padding-top: 5px;
+        }
+
+
+        .quantidade-produto label {
+            padding-bottom: 3px;
+            font-size: 13px;
+        }
+
+        .quantidade-produto input {
+            width: 70px;
+            height: 30px;
+            text-align: center;
+            border: 1px solid rgb(153, 153, 153);
+            outline: none;
+            font-size: 16px;
+            border-radius: 10px;
+            color: #474747;
+        }
+
+        .quantidade-produto {
+            padding-top: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .div-cupom {
+            font-size: 13px;
+            padding-bottom: 8px;
+        }
+
+
+
+
+
+        /* Cupom */
+        .cupom form {
+            display: flex;
+            margin-bottom: 15px;
+        }
+
+        .cupom form input {
+            flex: 1;
+            width: 70%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 6px 0 0 6px;
+            outline: none;
+        }
+
+        .cupom form button {
+            padding: 8px 12px;
+            border: none;
+            background: #000;
+            color: #fff;
+            border-radius: 0 6px 6px 0;
+            cursor: pointer;
+        }
+
+        /* Total */
+        .total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .subtotal {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .desconto {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .button-finalizar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button-finalizar a {
+            text-decoration: none;
+            color: white;
+            background-color: #000000;
+            max-width: 500px;
+            height: 40px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 14px;
+            width: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+
+
+
+        /* Container da notificação */
+        .notification {
+            position: fixed;
+            top: 30px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgb(177, 193, 196);
+            /* vermelho de erro */
+            color: white;
+            text-align: center;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 400px;
+            font-family: sans-serif;
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        /* Barra de progresso (fundo) */
+        .progress-bar {
+            width: 100%;
+            height: 3px;
+            background-color: rgba(255, 255, 255, 0.3);
+            margin-top: 10px;
+            border-radius: 3px;
+            overflow: hidden;
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+        }
+
+        /* Barra de progresso (parte que enche) */
+        .progress {
+            height: 100%;
+            width: 0%;
+            background-color: white;
+            transition: width linear;
+        }
+
+
+
+
+
+
+        .cupom-aplicado {
+            background-color: rgb(219, 245, 219);
+            border: 1px dashed rgb(155, 155, 155);
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 90px;
+            padding-left: 10px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .infos-cupom h1 {
+            padding-bottom: 5px;
+            font-size: 13px;
+        }
+
+        .infos-cupom h1 strong {
+            background-color: green;
+            padding: 3px 8px 3px 8px;
+            border-radius: 8px;
+            color: white;
+            font-size: 10px;
+        }
+
+        .infos-cupom p {
+            font-size: 11px;
+            color: #414141;
+        }
+
+        .trash-cupom {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+
+        .trash-cupom a {
+            text-decoration: none;
+            color: black;
+        }

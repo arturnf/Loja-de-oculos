@@ -4,11 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Produto;
 
 class TipoProduto extends Model
 {
     use HasFactory;
-
+    public function produtos() {
+        return $this->hasMany(Produto::class, 'tipoproduto_id');
+    } 
     protected $fillable = [
         'nome'
     ];

@@ -21,12 +21,14 @@ use App\Http\Controllers\CupomController;
 */
 
 Route::get('/', [MainController::class, 'index'])->name('home');
-Route::get('/loja/{id}', [MainController::class, 'loja'])->name('loja');
+Route::get('/loja', [MainController::class, 'loja'])->name('loja');
+Route::get('/colecoees', [MainController::class, 'colecoes'])->name('colecoes');
 Route::get('/colecao/{id}', [MainController::class, 'colecaoShow'])->name('colecao.show');
 Route::get('/contato', [MainController::class, 'contato'])->name('contato');
 Route::get('/sobre', [MainController::class, 'sobre'])->name('sobre');
 Route::get('/encaminhando', [MainController::class, 'contatoWhatsapp'])->name('encaminhando');
 Route::get('/produto/{id}', [MainController::class, 'pagProduto'])->name('pag.produto');
+Route::get('/loja/categoria/{id}', [MainController::class, 'lojaCategoria'])->name('lojaCategoria');
 
 //contatos
 Route::post('/enviando/contato', [ContatoController::class, 'criandoContato'])->name('criando.contato');
@@ -34,6 +36,7 @@ Route::get('/adm/contatos/{id}', [ContatoController::class, 'mostrandoContato'])
 
 //carrinho
 Route::post('/carrinho/addCarrinho', [CarrinhoController::class, 'addToCart'])->name('carrinho.addcarrinho');
+Route::post('/carrinho/atualizar', [CarrinhoController::class, 'atualizarCarrinho'])->name('atualizar.carrinho');
 Route::get('/carrinho/excluirCarrinho/{id}', [CarrinhoController::class, 'excluirCarrinho'])->name('carrinho.excluircarrinho');
 Route::get('/carrinho', [CarrinhoController::class, 'carrinho'])->name('carrinho');
 Route::get('/carrinho/encaminhando', [CarrinhoController::class, 'finalizando'])->name('carrinho.final');

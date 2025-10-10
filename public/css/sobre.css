@@ -1,0 +1,28 @@
+
+html, body{
+    background-color: black;
+}
+
+.sobre-main-pag{
+    height:90vh;
+    color: rgb(165, 165, 165);
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.sobre-main-pag h4{
+    font-size: 25px;
+    padding-bottom: 15px;
+}
+
+.sobre-main-pag p{
+    font-size: 0.70rem;
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}

@@ -1,65 +1,85 @@
 @extends('base.base')
 
-@section('title')
-<title>LisboaCompany - loja</title>
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/loja.css') }}?v=13">
 @endsection
 
 
 @section('content')
-
-<div class="container-main-loja">
-    @if(session('success'))
-    <div class="confirm-remove">
-        <h4>{{ session('success') }}</h4>
-    </div>
-    @endif
-    <div class="title-loja">
-        <h1>Loja</h1>
-    </div>
-    <div class="container-tipos">
-        @foreach($tipos as $tipo)
-        <a href="/loja/{{ $tipo->id }}">{{ $tipo->nome }}</a>
-        @endforeach
-    </div>
-    <div class="tipo-titulo">
-        <h4>{{ $tipoOne->nome }}</h4>
-    </div>
-
-    <div class="conainter-cards">
-        @foreach ($produtos as $produto)
-        <div class="product">
-            <div class="product-img">
-                <a href="{{  route('pag.produto', ['id' => $produto->id]) }}">
-                    <img src="{{ asset($produto->img) }}" alt="">
-                </a>
-            </div>
-            <div class="product-title hidden animate__animated">
-                {{ $produto->nome }}
-            </div>
-            <div class="product-price hidden animate__animated">
-                <p>R$ {{ $produto->preco }}</p>
-            </div>
-
-
-            @if($produto->esgotado)
-                <div class="button-esgotado">
-                    <a href="{{  route('pag.produto', ['id' => $produto->id]) }}">Avise-me quando chegar</a>
+    <main>
+        <div class="container-loja">
+            <div class="container-titulo">
+                <div class="titulo-loja">
+                @if ($pagProduto)
+                    <h1>{{ $categoria->nome }}</h1>
+                @else
+                    <h1>Todos Os Produtos</h1>
+                @endif
+                    
                 </div>
+                <div class="filtros">
 
-                <div class="esgot">
-                    <p>Esgotado</p>
+                    @if ($pagProduto)
+                        <a class="button" href="{{ route('loja') }}">Todos</a>
+                        @foreach ($tipos as $tipo)
+                            @if ($categoria->nome == $tipo->nome)
+                                <a class="button active" href="{{ route('lojaCategoria', ['id' => $tipo->id]) }}">{{ $tipo->nome }}</a>
+                            @else
+                                <a class="button" href="{{ route('lojaCategoria', ['id' => $tipo->id]) }}">{{ $tipo->nome }}</a>
+                            @endif
+                        @endforeach
+                    @else
+                        <a class="button active" href="{{ route('loja') }}">Todos</a>
+                        @foreach ($tipos as $tipo)
+                            <a class="button" href="{{ route('lojaCategoria', ['id' => $tipo->id]) }}">{{ $tipo->nome }}</a>
+                        @endforeach
+                    @endif
                 </div>
-            @else
-                 <div class="button">
-                    <a href="{{  route('pag.produto', ['id' => $produto->id]) }}">COMPRAR</a>
-                 </div>
-            @endif
+            </div>
+
+
+            <div class="loja">
+                @foreach ($produtos as $produto)
+                    <div class="produto {{ Str::slug($produto->tipo->nome) }}">
+                        @if ($produto->esgotado)
+                            <div class="esgot font-secundaria">
+                                <p>ESGOTADO</p>
+                            </div>
+                        @endif
+                        <div class="prod-img">
+                            <a href="{{ route('pag.produto', ['id' => $produto->id]) }}">
+                                <img src="{{ asset($produto->img) }}" alt="">
+                            </a>
+                        </div>
+                        <div class="botao-comprar">
+                            @if ($produto->esgotado)
+                                <a class="e-contato" href="{{ route('pag.produto', ['id' => $produto->id]) }}">Avise-me</a>
+                            @else
+                                <form action="{{ route('carrinho.addcarrinho') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="idProduto" value="{{ $produto->id }}">
+                                    <input type="hidden" name="img" value="{{ $produto->img }}">
+                                    <input type="hidden" name="nome" value="{{ $produto->nome }}">
+                                    <input type="hidden" name="preco" value="{{ $produto->preco }}">
+                                    <input type="hidden" name="quantidade" value="1">
+                                    <button type="submit" class="product-button">Comprar</button>
+                                </form>
+                            @endif
+                        </div>
+                        <div class="nome-produto hiddenT animate__animated">
+                            <p>{{ $produto->nome }}</p>
+                        </div>
+                        <div class="preco hiddenT animate__animated">
+                            <p>R$ {{ number_format($produto->preco, 2, ',', '.') }}</p>
+                        </div>
+                    </div>
+                @endforeach
+
+            </div>
         </div>
-        @endforeach
+    </main>
+@endsection
 
-        
-    </div>
-    {{ $produtos->onEachSide(1)->links('vendor.pagination.bootstrap-5') }}
-
-</div>
+@section('js')
+    <script src="{{ asset('js/loja.js') }}"></script>
 @endsection

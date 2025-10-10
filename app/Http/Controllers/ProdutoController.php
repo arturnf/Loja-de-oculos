@@ -169,9 +169,10 @@ class ProdutoController extends Controller
 
     public function editarProdutos($id){
         if(Auth::check()){
+            $tipo = TipoProduto::all();
             $produto = Produto::find($id);
 
-            return view('adm.produtoEdit', ['produto' => $produto]);
+            return view('adm.produtoEdit', ['produto' => $produto, 'tipo' => $tipo]);
         }
 
         return redirect()->route('login.adm');
@@ -187,7 +188,8 @@ class ProdutoController extends Controller
                 'nome' => 'required|string|max:255',
                 'preco' => 'required|numeric',
                 'img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:3048',
-                'esgotado' => 'required'
+                'esgotado' => 'required',
+                'tipo' => 'required'
             ]);
             
             $preco = (float) $request->input('preco');
@@ -215,7 +217,8 @@ class ProdutoController extends Controller
                     'nome' => $request->nome,
                     'img' => $caminhoImagem,
                     'preco' => $preco,
-                    'esgotado' => $request->esgotado
+                    'esgotado' => $request->esgotado,
+                    'tipoproduto_id' => $request->tipo
                 ]);
 
                 return redirect()->route('admin.produtos')->with('success', 'Produto atualizado com sucesso!');
@@ -224,7 +227,8 @@ class ProdutoController extends Controller
             $produto->update([
                 'nome' => $request->nome,
                 'preco' => $preco,
-                'esgotado' => $request->esgotado
+                'esgotado' => $request->esgotado,
+                'tipoproduto_id' => $request->tipo
             ]);
 
             return redirect()->route('admin.produtos')->with('success', 'Produto atualizado com sucesso!');

@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LisboaADM - InserirCupom</title>
-    <link rel="stylesheet" href="{{ asset('css/adm/produtoCriar.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/adm/cupomCriar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/adm/produtoCriar.css') }}?v=13">
+    <link rel="stylesheet" href="{{ asset('css/adm/cupomCriar.css') }}?v=13">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,6 +40,10 @@
                         <div class="flex">
                             <input type="text" id="code" placeholder="EX: DESCONTO2025" maxlength="24" name="cupom" required>
                             <button type="button" class="btn-secondary" onclick="copyCode()">Copiar</button>
+                        </div>
+                        <label class="min-carrinho" for="quantidade_minima">Mínimo de Produtos no Carrinho</label>
+                        <div class="flex">
+                            <input type="text" id="quantidade_minima" placeholder="Quantidade" maxlength="24" name="quantidade_minima" required>
                         </div>
                     </div>
 

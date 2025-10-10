@@ -11,16 +11,36 @@ use Illuminate\Http\Request;
 class MainController extends Controller
 {
     public function index(){
-        $colecao = Colecao::orderBy('id', 'desc')->get();
-        return view('homeAtualizada', ['colecao' => $colecao]);
+        
+        $categorias = TipoProduto::all();
+        $colecao = Colecao::orderBy('id', 'desc')->first();
+        return view('home', ['colecao' => $colecao, 'categorias' => $categorias]);
     }
     
-    public function loja($id){
-        $produtos = Produto::where('tipoproduto_id', $id)->orderBy('id', 'desc')->paginate(1);
+    public function loja(){
+        $pagProduto = false;
+        $produtos = Produto::orderBy('id', 'desc')->get();
         $tipos = TipoProduto::all();
-        $tipoOne = TipoProduto::find($id);
-        return view('loja', ['tipos' => $tipos, 'produtos' => $produtos, 'tipoOne' => $tipoOne]);
+        return view('loja', ['tipos' => $tipos, 'produtos' => $produtos, 'pagProduto' => $pagProduto]);
     }
+
+    public function lojaCategoria($id){
+        $produtos = Produto::where('tipoproduto_id', $id)->orderBy('id', 'desc')->get();
+        $categoria = TipoProduto::find($id);
+        $tipos = TipoProduto::all();
+        $pagProduto = true;
+
+        return view('loja', ['tipos' => $tipos, 'produtos' => $produtos, 'pagProduto' => $pagProduto, 'categoria' => $categoria]);
+    }
+
+
+    public function colecoes(){
+       
+        $colecoes = Colecao::orderBy('id', 'desc')->get();
+
+        return view('colecoes', ['colecoes' => $colecoes]);
+    }
+
 
     public function colecaoShow($id){
         $produtos = Produto::where('colecao_id', $id)->orderBy('id', 'desc')->get();
@@ -31,10 +51,12 @@ class MainController extends Controller
     }
 
     public function contato(){
+        
         return view('contatos');
     }
 
     public function sobre(){
+    
         return view('sobre');
     }
 

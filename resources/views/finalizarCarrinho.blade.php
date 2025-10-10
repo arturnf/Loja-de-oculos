@@ -1,61 +1,80 @@
 <!DOCTYPE html>
-<html lang="pt-BR" translate="no">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="{{ asset('favicon.PNG') }}" type="image/png">
+    <link rel="icon" href="{{ asset('favicon.png') }}?v=13" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lisboa - Confirmar</title>
-    <link rel="stylesheet" href="{{ asset('css/finalizandoCarrinho.css') }}">
+    <title>Finalização - LisboaCompany</title>
+    <link rel="stylesheet" href="{{ asset('css/finalizandoCarrinho.css') }}?v=13">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+
+
 </head>
 
 <body>
-    <header>
-        <div class="button-voltar">
-            <a href="{{ route('carrinho') }}">Voltar</a>
-        </div>
-        <div class="main-header">
-            <div class="logo">
-                <div class="logo-tx">
-                    <h1 class="l">L</h1>
-                    <h1 class="s">S</h1>
-                </div>
+
+    <div class="checkout-container">
+        <div class="logo">LisboaCompany</div>
+
+
+        <div class="steps">
+            <div class="step">
+                <span>1</span>
+                <p>Resumo Da Compra</p>
+            </div>
+            <div class="step-active active">
+                <span>2</span>
+                <p>Entrega</p>
             </div>
         </div>
-    </header>
 
-        <div class="checkout-container">
-            <h2>Endereço de Entrega</h2>
-            <form action="{{ route('carrinho.whatsapp') }}" method="post">
-                @csrf
-                <div class="form-group">
-                    <label for="cidade">Cidade</label>
-                    <input type="text" id="cidade" name="cidade" placeholder="Ex: Pilar" required>
-                </div>
 
-                <div class="form-group">
-                    <label for="rua">Rua</label>
-                    <input type="text" id="rua" name="rua" placeholder="Ex: Rua Luiz Ramo" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="bairro">Bairro</label>
-                    <input type="text" id="bairro" name="bairro" placeholder="Ex: Centro" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="numero">Número da Casa</label>
-                    <input type="text" id="numero" name="numero" placeholder="Ex: 123">
-                </div>
-                
-                <button type="submit" class="btn-submit">Enviar</button>
-            </form>
-    
-            <a href="{{ route('carrinho.whatsapp.combinar') }}" class="pickup-link">👉 Combinar Retirada</a>
+        <div class="resumo">
+            <h3>Entrega</h3>
         </div>
 
+        <div class="container-form">
+            <form action="{{ route('carrinho.whatsapp') }}" method="post">
+                @csrf
+                <div class="area-input">
+                    <input name="cidade" type="text" placeholder=" " required>
+                    <span class="text">Cidade</span>
+                </div>
 
-    
+                <div class="area-input">
+                    <input  name="rua" type="text" placeholder=" " required>
+                    <span class="text">Rua</span>
+                </div>
+
+                <div class="area-input">
+                    <input name="bairro" type="text" placeholder=" " required>
+                    <span class="text">Bairro</span>
+                </div>
+
+                <div class="area-input">
+                    <input name="numero" type="text" placeholder=" ">
+                    <span class="text">Número da Casa</span>
+                </div>
+                <div class="button-finalizar">
+                    <button type="submit">COMPRAR</button>
+                </div>
+                <div class="combinar">
+                    <a href="{{ route('carrinho.whatsapp.combinar') }}">Combinar Retirada</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="carrinho">
+        <a href="{{ route('carrinho') }}"><i class="fa-solid fa-cart-shopping"></i>Voltar Para o Carrinho</a>
+    </div>
 
 </body>
 

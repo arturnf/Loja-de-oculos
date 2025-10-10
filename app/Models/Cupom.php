@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Cupom extends Model
 {
     protected $table = 'cupons';
-    protected $fillable = ['cupom', 'desconto'];
+    protected $fillable = ['cupom', 'desconto', 'quantidade_minima'];
 
     use HasFactory;
 }

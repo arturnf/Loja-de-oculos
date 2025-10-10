@@ -11,20 +11,90 @@ class CarrinhoController extends Controller
     public function addToCart(Request $request){
 
         $validacao = $request->validate([
+            'idProduto' => 'required',
             'img' => 'required',
             'nome' => 'required',
-            'preco' => 'required'
+            'preco' => 'required',
+            'quantidade' => 'required'
         ]);
-
         $produto = $validacao;
         $produto['id'] = uniqid();
 
-        session()->push('listaDeObjetosSession', $produto);
+        $lista = session('listaDeObjetosSession', []);
+        $produtoExiste = false;
+        if (!empty($lista)){
+            foreach($lista as &$item){
+                if($item['idProduto'] == $produto['idProduto']){
+                    $item['quantidade'] += 1;
+                    $produtoExiste = true;
+                    break;
+                }
+            }
+        }
+        
 
+        if(!$produtoExiste){
+            $lista[] = $produto;
 
+        }
+
+        session(['listaDeObjetosSession' => $lista]);
+        
         return redirect()->back()->with('success', "{$request->nome} adicionado ao carrinho");
 
     }
+
+    public function atualizarCarrinho(Request $request){
+        $productId = $request->idProduto;
+        $quantity = max(1, (int) $request->quantity);
+        $preCarrinho = $request->precarrinho;
+
+        $lista = session('listaDeObjetosSession');
+        $cupom = session('cupom');
+        
+        $desconto = 0;
+        $subtotal = 0;
+        $total = 0;
+        if (!empty($lista)) {
+ 
+
+            foreach ($lista as &$item) {
+                // Atualiza só o produto que foi alterado
+
+
+                if ($item['idProduto'] == $productId) {
+                    $item['quantidade'] = $quantity;
+                    
+                }
+
+                // Recalcula o subtotal de todos (com as quantidades corretas)
+                $subtotal += $item['preco'] * $item['quantidade'];
+            }
+
+            session()->put('listaDeObjetosSession', $lista);
+            session()->save();
+
+            if($preCarrinho == "true"){
+                return view('precartSumary', ['total' => $subtotal]);
+            }  
+            
+            
+            if($cupom){
+                $total = $subtotal - ($subtotal * ($cupom['desconto'] / 100));
+                $desconto = round($subtotal * ($cupom['desconto'] / 100), 2);
+            }else{
+                $total = $subtotal;
+            }   
+            
+        }
+
+        // Retorna apenas o HTML atualizado (sem recarregar a página)
+        return view('cartSumary', compact('subtotal', 'total', 'desconto'));
+    }
+
+
+
+
 
     public function excluirCarrinho($id){
 
@@ -36,7 +106,7 @@ class CarrinhoController extends Controller
 
         session(['listaDeObjetosSession' => array_values($objetoLista)]);  
         
-        return redirect()->back();
+        return redirect()->back()->with('success', "item removido do carrinho");;
     }
 
     
@@ -45,25 +115,38 @@ class CarrinhoController extends Controller
         $lista = session('listaDeObjetosSession');
         $cupom = session('cupom');
 
+        if ($cupom) {
+            $codigo = $cupom['codigo']; 
+            $cupomMod = Cupom::where('cupom', $codigo)->first();
+
+            $quantidade = count($lista); 
+
+            if ($quantidade < $cupomMod->quantidade_minima) {
+                $cupom = null;
+                session()->forget('cupom');   
+                return back()->with('erroCarrinho', "Cupom removido — é necessário ter no mínimo {$cupomMod->quantidade_minima} produtos no carrinho.");   
+            }
+        }
+        
+
         $desconto = 0;
         $subtotal = 0;
         $total = 0;
         if (!empty($lista)) {
             foreach($lista as $item){
-                if($cupom){
-                    $subtotal += $item['preco'];
-                    $total = $subtotal - ($subtotal * ($cupom['desconto'] / 100));
-                    $desconto = round($subtotal * ($cupom['desconto'] / 100), 2);
-                }else{
-                    $subtotal += $item['preco'];
-                    $total = $subtotal;
-                }   
+                $subtotal += $item['preco'] * $item['quantidade']; 
             }
+            if($cupom){
+                $total = $subtotal - ($subtotal * ($cupom['desconto'] / 100));
+                $desconto = round($subtotal * ($cupom['desconto'] / 100), 2);
+            }else{
+                $total = $subtotal;
+            }  
         }
         
 
 
-        return view('carrinho', ['lista' => $lista, 'subtotal' => $subtotal, 'total' => $total, 'desconto' => $desconto]);
+        return view('carrinho', ['lista' => $lista, 'subtotal' => $subtotal, 'total' => $total, 'desconto' => $desconto, 'cupom' => $cupom]);
     }
 
 
@@ -80,9 +163,21 @@ class CarrinhoController extends Controller
         $codigo = $request->input('cupom');
         $cupom = Cupom::where('cupom', $codigo)->first();
 
+        $lista = session('listaDeObjetosSession');
+        if (!empty($lista)){
+            $quantidade = count($lista);
+            if($quantidade < $cupom->quantidade_minima){
+                return back()->with('erroCarrinho', "Este cupom exige no mínimo {$cupom->quantidade_minima} produtos no carrinho.");
+            }
+        }else{
+            return back()->with('erroCarrinho', "Adicione produtos ao carrinho.");
+        }
+        
+
         session()->put('cupom', [
             'codigo' => $cupom->cupom,
-            'desconto' => $cupom->desconto
+            'desconto' => $cupom->desconto,
+            'quantidade_minima' => $cupom->quantidade_minima
         ]);
 
         return back()->with('sucesso', 'Cupom aplicado com sucesso!');
@@ -137,7 +232,7 @@ class CarrinhoController extends Controller
         $mensagem .= "📋*Produtos:*\n";
 
         foreach ($produtos as $produto) {
-            $mensagem .= "- {$produto['nome']} (Preço: R$ {$produto['preco']})\n";
+            $mensagem .= "- {$produto['quantidade']}x {$produto['nome']} (Preço: R$ {$produto['preco']})\n";
         }
 
         $cupom = session('cupom');
@@ -146,7 +241,7 @@ class CarrinhoController extends Controller
 
         // calcula subtotal
         foreach ($produtos as $produto) {
-            $subtotal += $produto['preco'];
+            $subtotal += $produto['preco'] * $produto['quantidade'];
         }
 
         // calcula desconto e total
@@ -192,7 +287,7 @@ class CarrinhoController extends Controller
         $mensagem .= "📋*Produtos:*\n";
 
         foreach ($produtos as $produto) {
-            $mensagem .= "- {$produto['nome']} (Preço: R$ {$produto['preco']})\n";
+            $mensagem .= "- {$produto['quantidade']}x {$produto['nome']} (Preço: R$ {$produto['preco']})\n";
         }
 
         $cupom = session('cupom');
@@ -201,7 +296,7 @@ class CarrinhoController extends Controller
 
         // calcula subtotal
         foreach ($produtos as $produto) {
-            $subtotal += $produto['preco'];
+            $subtotal += $produto['preco'] * $produto['quantidade'];
         }
 
         // calcula desconto e total
