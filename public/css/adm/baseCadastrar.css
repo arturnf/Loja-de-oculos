@@ -1,0 +1,342 @@
+.title {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 30px;
+  justify-content: space-between;
+}
+
+.title .text-title p {
+  color: rgb(77, 77, 77);
+}
+
+.button-criar {
+  text-decoration: none;
+  color: white;
+  background-color: #2463eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  width: 180px;
+  height: 40px;
+  transition: all 0.2s;
+}
+
+.button-criar:hover {
+  background-color: #204aa7;
+}
+
+.infos {
+  width: 100%;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.box-info {
+  flex: 1 1 200px;
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  padding-left: 20px;
+  border: 1px solid rgb(226, 226, 226);
+  border-radius: 8px;
+}
+
+.box-info p {
+  color: rgb(77, 77, 77);
+}
+
+.box-info h1 {
+  font-size: 24px;
+}
+
+.container-list-products {
+  width: 100%;
+  padding: 30px;
+}
+
+.box-list-products {
+  width: 100%;
+  border: 1px solid rgb(226, 226, 226);
+  padding: 20px;
+}
+
+.header-list-products {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100px;
+}
+
+.header-list-products h1 {
+  font-size: 23px;
+}
+
+.header-list-products p {
+  font-size: 14px;
+  color: rgb(77, 77, 77);
+}
+
+
+
+
+.tabela-produtos {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Cabeçalho */
+
+.tabela-produtos th {
+  text-align: left;
+  padding: 1rem;
+  font-weight: 400;
+  color: rgb(77, 77, 77);
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Linhas */
+.tabela-produtos td {
+  padding: 1rem;
+  font-size: 13px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tabela-produtos tr:last-child td {
+  border-bottom: none;
+}
+
+/* Efeito hover */
+.tabela-produtos tbody tr:hover {
+  background: #e2e2e2;
+  cursor: pointer;
+}
+
+/* Status */
+.status {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status.ativo {
+  background: #2563eb;
+  color: #e0ebff;
+}
+
+.status.inativo {
+  background: #e5e7eb;
+  color: #6b7280;
+}
+
+.box-input-imgs {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.input-file {
+  display: none;
+}
+
+.img-input{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.label-file{
+    background-color: #868a92;
+    margin-top: 10px;
+    padding: 6px 10px 6px 10px;
+    color: white;
+    font-size: 13px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.label-file:hover{
+  background-color: #a8afbb;
+}
+
+.img-input img {
+  width: 130px;
+  height: 170px;
+  object-fit: cover;
+  object-position: center;
+}
+
+
+.button{
+  background-color: #2463eb;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 40px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.button:hover{
+  background-color: #1f438f;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* form */
+
+.form {
+  width: 100%;
+  padding: 30px;
+}
+
+.form form {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  max-width: 500px;
+}
+
+
+.box-input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.box-input input {
+  outline: none;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgb(226, 226, 226);
+}
+
+
+.box-input textarea{
+  outline: none;
+  border: 1px solid rgb(226, 226, 226);
+  padding: 10px;
+  border-radius: 8px;
+  min-height: 150px;
+  max-height: 400px;
+  resize: vertical;
+}
+
+.box-input label {
+  font-size: 14px;
+  padding-left: 4px;
+  padding-bottom: 8px;
+}
+
+.box-input select {
+
+  appearance: none; /* remove o estilo padrão */
+  -webkit-appearance: none; /* Safari e iOS */
+  -moz-appearance: none;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  color: #333;
+  width: 100%;
+  background-image: url("data:image/svg+xml;charset=UTF-8,<svg width='10' height='6' xmlns='http://www.w3.org/2000/svg'><path d='M0 0l5 6 5-6z' fill='%23333'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  outline: none;
+  padding: 10px;
+  border: 1px solid rgb(226, 226, 226);
+  border-radius: 8px;
+}
+
+.box-input input:focus {
+  border: 1px solid #80a4f3;
+}
+
+.box-input-number {
+  display: flex;
+  gap: 10px;
+}
+
+
+.container-button{
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  justify-content: space-between;
+
+}
+
+.container-button .button{
+  margin-bottom: 0px;
+  width: 32%;
+}
+
+.container-button a{
+  border-radius: 8px;
+  width: 32%;
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+}
+
+.trash{
+  background-color: rgb(218, 136, 136);
+  transition: all 0.2s;
+}
+.trash:hover{
+  background-color: rgb(235, 59, 59);
+}
+
+.showButtonContato{
+  background-color: rgb(116, 206, 116);
+  transition: all 0.2s;
+}
+
+.showButtonContato:hover{
+  background-color: rgb(35, 148, 35);
+}
+
+
+
+@media (max-width: 740px) {
+    .box-input-number {
+      flex-wrap: wrap;
+    }
+}
+
+

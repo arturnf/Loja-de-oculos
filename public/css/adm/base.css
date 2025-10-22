@@ -1,0 +1,628 @@
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+    font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+
+body {
+    background-color: #ffffff;
+}
+
+.container-main {
+    position: relative;
+    width: 100dvw;
+    height: 100dvh;
+    display: flex;
+    max-width: 2000px;
+    margin: auto;
+}
+
+
+.nav-bar {
+    position: relative;
+    width: 250px;
+    height: 100%;
+    background-color: #0f1729;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.close {
+    display: none;
+}
+
+
+.logo {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.logo h1 {
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+}
+
+
+.nav-bar nav {
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+}
+
+.nav-bar nav a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.nav-bar nav a:hover {
+    background-color: #3b82f6;
+    color: white;
+}
+
+
+.nav-bar p {
+    font-size: 12px;
+    color: white;
+    width: 100%;
+    padding-left: 20px;
+    margin-top: 20px;
+
+}
+
+.selected {
+    background-color: #3b82f6;
+}
+
+
+
+
+.contents-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.box-content {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.header-contents {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid rgb(226, 226, 226);
+}
+
+.header-contents h1 {
+    font-size: 20px;
+    color: rgb(77, 77, 77);
+    font-weight: 200;
+    padding-left: 30px;
+}
+
+.menu-bar {
+    display: none;
+}
+
+
+
+
+
+
+.title {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 30px;
+    justify-content: space-between;
+}
+
+.title .text-title p {
+    color: rgb(77, 77, 77);
+}
+
+.button-criar {
+    text-decoration: none;
+    color: white;
+    background-color: #2463eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    width: 180px;
+    height: 40px;
+    transition: all 0.2s;
+}
+
+.button-criar:hover {
+    background-color: #204aa7;
+}
+
+.infos {
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.box-info {
+    flex: 1 1 200px;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    padding-left: 20px;
+    border: 1px solid rgb(226, 226, 226);
+    border-radius: 8px;
+}
+
+.box-info p {
+    color: rgb(77, 77, 77);
+}
+
+.box-info h1 {
+    font-size: 24px;
+}
+
+.container-list-products {
+    width: 100%;
+    padding: 30px;
+}
+
+.box-list-products {
+    width: 100%;
+    border: 1px solid rgb(226, 226, 226);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.header-list-products {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100px;
+}
+
+.header-list-products h1 {
+    font-size: 23px;
+}
+
+.header-list-products p {
+    font-size: 14px;
+    color: rgb(77, 77, 77);
+}
+
+
+
+
+.tabela-produtos {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Cabeçalho */
+
+.tabela-produtos th {
+    text-align: left;
+    padding: 1rem;
+    font-weight: 400;
+    color: rgb(77, 77, 77);
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* Linhas */
+.tabela-produtos td {
+    padding: 1rem;
+    font-size: 13px;
+    border-bottom: 1px solid #e5e7eb;
+    width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tabela-produtos tr:last-child td {
+    border-bottom: none;
+}
+
+/* Efeito hover */
+.tabela-produtos tbody tr:hover {
+    background: #e2e2e2;
+    cursor: pointer;
+}
+
+/* Status */
+.status {
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.status.ativo {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.status.inativo {
+
+    color: #6b7280;
+}
+
+.showButton {
+    text-decoration: none;
+    color: white;
+    background-color: #15b879;
+    border-radius: 20px;
+    font-size: 12px;
+    padding: 0.4rem 0.8rem;
+    transition: all 0.3s;
+}
+
+.showButton:hover {
+    background-color: #96fad3;
+}
+
+
+.trashButton {
+    color: rgb(255, 255, 255);
+    background-color: #ff0000;
+    padding: 8px;
+    font-size: 10px;
+    border-radius: 8px;
+}
+
+
+
+
+
+
+
+.tabela-produto-mobile {
+    display: none;
+    padding-top: 30px;
+    width: 100%;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tabela-produto-mobile a {
+    text-decoration: none;
+    color: black;
+}
+
+.tabela-produto-mobile a:hover {
+    background-color: #f3f3f3;
+}
+
+.produto-mobile {
+    display: flex;
+}
+
+.produto-mobile .area-nome {
+    overflow: hidden;
+    padding-left: 6px;
+    flex: 1;
+}
+
+.produto-mobile .area-nome p {
+    font-size: 13px;
+    color: #333333;
+}
+
+.produto-mobile .area-nome h1 {
+    font-size: 17px;
+}
+
+.produto-mobile .area-estoque p {
+    font-size: 12px;
+    color: #ffffff;
+    background-color: #0ab8d6;
+    padding: 5px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.produto-mobile .area-sem-estoque p {
+    font-size: 12px;
+    color: #ffffff;
+    background-color: #a9abac;
+    padding: 5px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.img-produto-mobile img {
+    width: 80px;
+    height: 100px;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+
+
+.notification {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(111, 185, 108);
+    /* vermelho de erro */
+    color: white;
+    text-align: center;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 400px;
+    font-family: sans-serif;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.notification-error {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(190, 101, 101);
+    /* vermelho de erro */
+    color: white;
+    text-align: center;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 400px;
+    font-family: sans-serif;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+/* Barra de progresso (fundo) */
+.progress-bar {
+    width: 100%;
+    height: 3px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin-top: 10px;
+    border-radius: 3px;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+
+/* Barra de progresso (parte que enche) */
+.progress {
+    height: 100%;
+    width: 0%;
+    background-color: white;
+    transition: width linear;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content p{
+    color:#333333;
+}
+
+
+.modal-buttons {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.modal-buttons #cancelar {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-weight: bold;
+    background: #ccc;
+    color: #222;
+}
+
+.modal-buttons .confirmar {
+    background: #e53935;
+    color: white;
+    transition: 0.2s;
+}
+
+
+.modal-buttons #cancelar:hover, .modal-buttons .confirmar:hover{
+    transform: scale(1.05);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 740px) {
+    .nav-bar {
+        position: absolute;
+        left: -100%;
+        width: 100%;
+        z-index: 100;
+        transition: all 0.4s;
+    }
+
+
+
+    .px {
+        display: none;
+    }
+
+
+    .tabela-produto-mobile {
+        display: flex;
+    }
+
+
+    .close {
+        display: block;
+        color: white;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-weight: none;
+    }
+
+    .open {
+        left: 0px;
+    }
+
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tr {
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    .tabela-produtos td {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 10px;
+        border: none;
+        border-bottom: 1px solid #eee;
+        margin: auto;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal;
+    }
+
+    .tabela-produtos td strong {
+
+        text-align: end;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    td::before {
+        content: attr(data-label);
+        padding-right: 10px;
+        font-weight: bold;
+    }
+
+
+    .text-title h1 {
+        font-size: 20px;
+    }
+
+    .text-title p {
+        font-size: 13px;
+    }
+
+    .button-criar {
+        font-size: 13px;
+    }
+
+    .box-info {
+        flex: 1 1 100px;
+    }
+
+    .box-info p {
+        font-size: 13px;
+        padding-right: 5px;
+    }
+
+    .box-info h1 {
+        font-size: 15px;
+    }
+
+    .header-contents h1 {
+        font-size: 16px;
+    }
+
+    .menu-bar {
+        display: block;
+        position: absolute;
+        right: 30px;
+        font-size: 20px;
+        color: #333333;
+        padding: 10px;
+    }
+}
+
+
+@media (max-width: 440px) {
+    .tabela-produtos td {
+        width: 200px;
+    }
+}

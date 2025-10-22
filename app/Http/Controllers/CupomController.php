@@ -10,9 +10,10 @@ class CupomController extends Controller
 {
     public function listaCupom(){
         if(Auth::check()){
-            $cupon = Cupom::all();
+            $cupom = Cupom::all();
+            $totalCupons = Cupom::count();
 
-            return view('adm.cupomPainel', ['cupon' => $cupon]);
+            return view('adm.cupom.cupomPainel', ['cupom' => $cupom, 'totalCupons' => $totalCupons]);
         }
         return redirect()->route('login.adm');
     }
@@ -20,7 +21,7 @@ class CupomController extends Controller
     public function formCupom(){
         if(Auth::check()){
 
-            return view('adm.cupomCriar');
+            return view('adm.cupom.cupomCriar');
         }
         return redirect()->route('login.adm');        
     }
@@ -66,7 +67,7 @@ class CupomController extends Controller
         if(Auth::check()){
             $cupom = Cupom::find($id);
 
-            return view('adm.cupomEditar', ['cupom' => $cupom]);
+            return view('adm.cupom.cupomAtualizar', ['cupom' => $cupom]);
         }
 
         return redirect()->route('login.adm');

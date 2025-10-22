@@ -9,7 +9,8 @@ use App\Models\Produto;
 
 class ContatoController extends Controller
 {
-    public function criandoContato(Request $request){
+    public function criandoContato(Request $request)
+    {
         $request->validate([
             'nome' => 'required',
             'numero' => 'required',
@@ -31,14 +32,33 @@ class ContatoController extends Controller
 
 
 
-    public function mostrandoContato($id){
+    public function mostrandoContato($id)
+    {
         if (Auth::check()) {
             $contatos = Contato::where('produto_id', $id)->get();
             $produto = Produto::where('id', $id)->first();
 
 
-            return view('adm.tabelaDeContatos', ['contatos'=>$contatos, 'produto'=>$produto]);
+            return view('adm.produto.produtoNumeros', ['contatos' => $contatos, 'produto' => $produto]);
         }
+        return redirect()->route('login.adm');
+    }
+
+
+
+    public function excluindoContato($id, $produto_id)
+    {
+        if (Auth::check()) {
+            $contato = Contato::find($id);
+
+            if ($contato) {
+                $contato->delete();
+                return redirect()->route('lista.contatos', ['id' => $produto_id])->with('success', 'Contato Removido Com Sucesso!😁');
+            }
+
+            return redirect()->route('lista.contatos', ['id' => $produto_id])->with('error', 'Erro ao Remover Este Contato!😥');
+        }
+
         return redirect()->route('login.adm');
     }
 }

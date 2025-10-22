@@ -11,13 +11,6 @@ use App\Models\NumeroCelular;
 
 class AdminController extends Controller
 {
-    public function painel(){
-        if (!Auth::check()) {
-            return redirect()->route('login.adm');
-        }
-
-        return view('adm.painel');
-    }
 
 
     public function login(){
@@ -59,14 +52,13 @@ class AdminController extends Controller
 
 
 
-
-    public function painelProdutos(){
-        if(Auth::check()){
-            $produtos = Produto::all();
-            return view('adm.produtosPainel', ['produtos' => $produtos]);
+     public function painel(){
+        if (!Auth::check()) {
+            return redirect()->route('login.adm');
         }
-
-        return redirect()->route('login.adm');
+        $produtos = Produto::orderBy('id', 'desc')->get();
+        $total = Produto::sum('preco');
+        return view('adm.produto.produtoPainel', ['produtos' => $produtos, 'total' => $total]);
     }
 
 
@@ -74,8 +66,10 @@ class AdminController extends Controller
     public function painelTipos(){
         if(Auth::check()){
             $tipos = TipoProduto::all();
+            $totalTipos = TipoProduto::count();
+            $totalProdutosTipados = Produto::whereNotNull('tipoproduto_id')->count();
 
-            return view('adm.tipoPainel', ['tipos' => $tipos]);
+            return view('adm.categoria.categoriaPainel', ['categoria' => $tipos, 'totalCategoria' => $totalTipos, 'totalProdutosCat' => $totalProdutosTipados]);
         }
 
         return redirect()->route('login.adm');
@@ -87,8 +81,10 @@ class AdminController extends Controller
     public function painelColecao(){
         if(Auth::check()){
             $colecoes = Colecao::all();
+            $totalColecoes = Colecao::count();
+            $totalProdutosColecoes = Produto::whereNotNull('colecao_id')->count();
 
-            return view('adm.colecaoPainel', ['colecoes' => $colecoes]);
+            return view('adm.colecao.colecaoPainel', ['colecoes' => $colecoes, 'totalColecoes' => $totalColecoes, 'totalProdutosColecoes' => $totalProdutosColecoes]);
         }
 
         return redirect()->route('login.adm');
@@ -101,7 +97,7 @@ class AdminController extends Controller
         if(Auth::check()){
             $numero = NumeroCelular::find(1);
 
-            return view('adm.config', ['numero'=>$numero]);
+            return view('adm.whatsappLoja', ['numero'=>$numero]);
         }
         return redirect()->route('login.adm');
 

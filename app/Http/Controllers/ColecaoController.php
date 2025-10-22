@@ -12,7 +12,7 @@ class ColecaoController extends Controller
 {
     public function inserir(){
         if(Auth::check()){
-            return view('adm.colecaoCriar');
+            return view('adm.colecao.colecaoCriar');
         }
 
         return redirect()->route('login.adm');
@@ -20,7 +20,7 @@ class ColecaoController extends Controller
 
     public function dado(Request $request){
         if(Auth::check()){
-            $validatedData = $request->validate([
+            $request->validate([
                 'nome' => 'required',
                 'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:12048', // 12KB máximo
                 'descricao' => 'nullable',
@@ -61,9 +61,9 @@ class ColecaoController extends Controller
             $colecao = Colecao::find($id);
             if ($colecao){
                 $colecao->delete();
-                return redirect()->back()->with('success', 'Coleção Removida Com Sucesso!😁');
+                return redirect()->route('admin.colecoes')->with('success', 'Coleção Removida Com Sucesso!😁');
             }else{
-                return redirect()->back()->with('erro', 'Erro ao Remover Esta Coleção!😥');
+                return redirect()->route('admin.colecoes')->with('error', 'Erro ao Remover Esta Coleção!😥');
             }
         }
 
@@ -78,7 +78,7 @@ class ColecaoController extends Controller
         if(Auth::check()){
             $colecao = Colecao::find($id);
 
-            return view('adm.colecaoEditar', ['colecao' => $colecao]);
+            return view('adm.colecao.colecaoAtualizar', ['colecao' => $colecao]);
         }
 
         return redirect()->route('login.adm');

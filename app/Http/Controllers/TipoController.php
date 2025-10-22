@@ -18,7 +18,7 @@ class TipoController extends Controller
                 'nome' => $request->nome
             ]);
 
-            return redirect()->route('admin.tipos')->with('success', 'Tipo Criado Com Sucesso!😁');
+            return redirect()->route('admin.tipos')->with('success', 'Categoria Criada Com Sucesso!😁');
         }
         return redirect()->route('login.adm');
         
@@ -27,7 +27,7 @@ class TipoController extends Controller
 
     public function fomCriar(){
         if(Auth::check()){
-            return view('adm.tipoCriar');
+            return view('adm.categoria.categoriaCriar');
         }
 
         return redirect()->route('login.adm');
@@ -41,10 +41,10 @@ class TipoController extends Controller
         
             if($tipo){
                 $tipo->delete();
-                return redirect()->route('admin.tipos')->with('success', 'Tipo Removido Com Sucesso!😁');
+                return redirect()->route('admin.tipos')->with('success', 'Categoria Removida Com Sucesso!😁');
             }
 
-            return redirect()->route('admin.tipos')->with('erro', 'Erro ao Remover Este Tipo!😥');
+            return redirect()->route('admin.tipos')->with('erro', 'Erro ao Remover Esta Categoria!😥');
         }
 
         return redirect()->route('login.adm');
@@ -57,7 +57,7 @@ class TipoController extends Controller
 
         if(Auth::check()){
             $tipo = TipoProduto::find($id);
-            return view('adm.tipoEditar', ['tipo' => $tipo]);
+            return view('adm.categoria.categoriaAtualizar', ['tipo' => $tipo]);
         }
 
         return redirect()->route('login.adm');
@@ -78,7 +78,7 @@ class TipoController extends Controller
                 'nome' => $request->nome
             ]);
 
-            return redirect()->route('admin.tipos')->with('success', 'Tipo atualizado com sucesso!');
+            return redirect()->route('admin.tipos')->with('success', 'Categoria atualizada com sucesso!');
 
         }
 

@@ -33,6 +33,7 @@ Route::get('/loja/categoria/{id}', [MainController::class, 'lojaCategoria'])->na
 //contatos
 Route::post('/enviando/contato', [ContatoController::class, 'criandoContato'])->name('criando.contato');
 Route::get('/adm/contatos/{id}', [ContatoController::class, 'mostrandoContato'])->name('lista.contatos');
+Route::get('/adm/contatos/remove/{id}/{produto_id}', [ContatoController::class, 'excluindoContato'])->name('excluindo.contatos');
 
 //carrinho
 Route::post('/carrinho/addCarrinho', [CarrinhoController::class, 'addToCart'])->name('carrinho.addcarrinho');
@@ -92,6 +93,5 @@ Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
 
 //adm.painel
 Route::get('/admin', [AdminController::class, 'painel'])->name('admin');
-Route::get('/admin/produtos', [AdminController::class, 'painelProdutos'])->name('admin.produtos');
 Route::get('/admin/colecoes', [AdminController::class, 'painelColecao'])->name('admin.colecoes');
 Route::get('/admin/tipos', [AdminController::class, 'painelTipos'])->name('admin.tipos');

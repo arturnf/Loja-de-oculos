@@ -1,45 +1,34 @@
 <!DOCTYPE html>
-<html lang="pt-BR" translate="no">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LisboaADM - Login</title>
-    <link rel="stylesheet" href="{{ asset('css/adm/login.css') }}?v=2">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="{{ asset('favicon.png') }}?v=13" type="image/png">
+    <title>Login | Lisboa Company</title>
+    <link rel="stylesheet" href="{{ asset('css/adm/login.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-
 <body>
-    <main>
-        <div class="container">
-            <div class="icone">
-                <h4>LisBoa <span>ADM</span></h4>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="icon-box">
+                <i class="fa-solid fa-building"></i>
             </div>
+            <h1>Lisboa Company</h1>
+            <p class="subtitle">Acesse o painel administrativo</p>
 
-            @if($errors->any())
-                @foreach($errors->all() as $error)
-                    <p class="aviso"><i class="fa-solid fa-triangle-exclamation"></i> {{ $error }}</p>
-                @endforeach
-            @endif
+            <form action="{{ route('auth') }}" method="POST">
+                @csrf
+                <label for="email">Usuário</label>
+                <input type="text" name="name" id="email" placeholder="Usuário" required>
 
-            <div class="formulario">
-                <form action="{{ route('auth') }}" method="POST">
-                    @csrf
-                    <div class="email">
-                        <label for="name">USUÁRIO</label>
-                        <input type="text" name="name">
-                    </div>
-                    <div class="senha">
-                        <label for="password">SENHA</label>
-                        <input type="password" name="password">
-                    </div>
+                <label for="password">Senha</label>
+                <input type="password" name="password" id="password" placeholder="********" required>
 
-                    <input id="botao" type="submit" value="Login">
-                </form>
-            </div>
+                <button type="submit">Entrar</button>
+            </form>
+
         </div>
-
-    </main>
+    </div>
 </body>
-
 </html>
