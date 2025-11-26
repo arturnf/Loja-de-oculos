@@ -10,22 +10,25 @@ use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
-    public function index(){
-        
-        $categorias = TipoProduto::all();
+    public function index()
+    {
+
+        $categorias = TipoProduto::with('produtos')->get();
         $colecao = Colecao::orderBy('id', 'desc')->first();
         return view('home', ['colecao' => $colecao, 'categorias' => $categorias]);
     }
-    
-    public function loja(){
+
+    public function loja()
+    {
         $pagProduto = false;
-        $produtos = Produto::orderBy('id', 'desc')->get();
+        $produtos = Produto::orderBy('id', 'desc')->simplePaginate(15);
         $tipos = TipoProduto::all();
         return view('loja', ['tipos' => $tipos, 'produtos' => $produtos, 'pagProduto' => $pagProduto]);
     }
 
-    public function lojaCategoria($id){
-        $produtos = Produto::where('tipoproduto_id', $id)->orderBy('id', 'desc')->get();
+    public function lojaCategoria($id)
+    {
+        $produtos = Produto::where('tipoproduto_id', $id)->orderBy('id', 'desc')->simplePaginate(15);
         $categoria = TipoProduto::find($id);
         $tipos = TipoProduto::all();
         $pagProduto = true;
@@ -34,46 +37,51 @@ class MainController extends Controller
     }
 
 
-    public function colecoes(){
-       
+    public function colecoes()
+    {
+
         $colecoes = Colecao::orderBy('id', 'desc')->get();
 
         return view('colecoes', ['colecoes' => $colecoes]);
     }
 
 
-    public function colecaoShow($id){
+    public function colecaoShow($id)
+    {
         $produtos = Produto::where('colecao_id', $id)->orderBy('id', 'desc')->get();
         $colecao = Colecao::find($id);
 
         return view('colecao', ['colecao' => $colecao, 'produtos' => $produtos]);
-
     }
 
-    public function contato(){
-        
+    public function contato()
+    {
+
         return view('contatos');
     }
 
-    public function sobre(){
-    
+    public function sobre()
+    {
+
         return view('sobre');
     }
 
 
 
-    public function contatoWhatsapp(){
+    public function contatoWhatsapp()
+    {
         $numero = NumeroCelular::find(1);
-        $numeroWhatsApp = $numero->numero; 
+        $numeroWhatsApp = $numero->numero;
         $urlWhatsApp = "https://wa.me/$numeroWhatsApp";
 
-        
+
         return redirect($urlWhatsApp);
     }
 
 
 
-    public function pagProduto($id){
+    public function pagProduto($id)
+    {
         $produto = Produto::find($id);
 
         return view('produtoPagina', ['produto' => $produto]);

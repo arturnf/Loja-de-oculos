@@ -48,7 +48,7 @@
                         @endif
                         <div class="prod-img">
                             <a href="{{ route('pag.produto', ['id' => $produto->id]) }}">
-                                <img src="{{ asset($produto->img) }}" alt="">
+                                <img src="{{ asset($produto->img) }}" alt="" loading="lazy">
                             </a>
                         </div>
                         <div class="botao-comprar">
@@ -76,7 +76,12 @@
                 @endforeach
 
             </div>
+            <div class="linksPaginate"
+                {{ $produtos->links('partials.paginate') }}
+            </div>
         </div>
+
+        
     </main>
 @endsection
 

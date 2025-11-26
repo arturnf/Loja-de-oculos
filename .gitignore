@@ -17,7 +17,6 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-README.md
 
 public/colecoes/*
 !public/colecoes/.gitkeep

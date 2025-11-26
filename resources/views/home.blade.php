@@ -12,7 +12,7 @@
             <p>Eleve sua performance!</p>
             <a href="{{ route('colecoes') }}">Ver Coleções</a>
         </div>
-        <img class="hidden animate__animated" src="{{ asset('img/imagem-banner-lisboa.png') }}" alt="">
+        <img class="hidden animate__animated" src="{{ asset('img/imagem-banner-lisboa.png') }}" alt="" loading="lazy">
     </div>
     <main>
         <div class="container-produtos">
@@ -24,7 +24,7 @@
                     <a href="{{ route('lojaCategoria', ['id' => $categoria->id]) }}">Ver Mais ></a>
                 </div>
                 <div class="produtos">
-                @foreach($categoria->produtos()->orderBy('id', 'desc')->take(5)->get() as $produto)
+                @foreach($categoria->produtos->sortByDesc('id')->take(5) as $produto)
                     
                         <div class="produto">
                             @if($produto->esgotado)
@@ -36,7 +36,7 @@
 
                             <div class="prod-img">
                                 <a href="{{ route('pag.produto', ['id' => $produto->id]) }}">
-                                    <img src="{{ asset($produto->img) }}" alt="">
+                                    <img src="{{ asset($produto->img) }}" alt="" loading="lazy">
                                 </a>
                                 
                             </div>
@@ -77,7 +77,7 @@
                 <h1>Ultima Coleção Adicionada</h1>
             </div>
             <div class="colec">
-                <img src="{{ asset($colecao->img) }}" alt="">
+                <img src="{{ asset($colecao->img) }}" alt="" loading="lazy">
                 <div class="text-colec hiddenT animate__animated">
                     <h1>{{ $colecao->nome }}</h1>
                     @if($colecao->descricao)
