@@ -9,8 +9,10 @@
 
     <div class="banner">
         <div class="text-banner">
-            <p>Eleve sua performance!</p>
-            <a href="{{ route('colecoes') }}">Ver Coleções</a>
+            
+            <p>CORREDORES RUN VIP</p>
+            <a href="{{ route('colecao.show', ['id'=>'13']) }}">Ver Coleção</a>
+           
         </div>
         <img class="hidden animate__animated" src="{{ asset('img/imagem-banner-lisboa.png') }}" alt="" loading="lazy">
     </div>

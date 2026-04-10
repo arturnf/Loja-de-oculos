@@ -10,9 +10,11 @@
 }
 
 .banner .text-banner {
-    width: 250px;
+    width: 330px;
     font-size: 30px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     z-index: 100;
 }
 
@@ -20,7 +22,10 @@
     line-height: 35px;
     padding-bottom: 20px;
     text-align: center;
+    width: 300px;
 }
+
+
 
 .banner img {
     width: 300px;
@@ -29,7 +34,7 @@
 .banner .text-banner a {
     font-size: 15px;
     padding: 16px;
-    background-color: #1693a5;
+    background-color: #c7a80f;
     color: white;
     text-decoration: none;
     border-radius: 8px;
@@ -37,7 +42,7 @@
 }
 
 .banner .text-banner a:hover {
-    background-color: #16c5e0;
+    background-color: #9c8513;
 }
 
 
@@ -74,7 +79,8 @@ main {
     cursor: pointer;
     transition: all 0.4s;
 }
-.categoria .titulo a:hover{
+
+.categoria .titulo a:hover {
     color: #1693a5;
 }
 
@@ -146,7 +152,7 @@ main {
 }
 
 .product-button {
-    background-color:#1692a500;
+    background-color: #1692a500;
     cursor: pointer;
     width: 190px;
     border: none;
@@ -166,7 +172,7 @@ main {
     font-size: 14px;
 }
 
-.botao-comprar:hover{
+.botao-comprar:hover {
     background-color: #16c5e0;
 }
 
@@ -595,6 +601,7 @@ main {
     }
 
     .text-banner {
+        margin-top: 100px;
         position: absolute;
     }
 

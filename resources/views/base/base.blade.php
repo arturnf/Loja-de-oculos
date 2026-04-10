@@ -24,7 +24,11 @@
 </head>
 
 <body @if (session('successContato')) onload = "showNotification('{{ session('successContato') }}')" @endif>
+    <div class="anuncio">
+        <h1>Cupom com 15% de desconto: eusouvip</h1>
+    </div>
     <div class="container-header">
+
         <header>
             <div class="menu-hamb hiddenT animate__animated">
                 <i class="fa-solid fa-bars"></i>
@@ -113,8 +117,8 @@
                                     hx-target="#pre-cart-summary" hx-swap="outerHTML">
                                     @csrf
                                     <label for="quantity">Quantidade:</label>
-                                    <input class="quantidadeCarrinho" type="number" name="quantity" value="{{ $item['quantidade'] }}"
-                                        min="1">
+                                    <input class="quantidadeCarrinho" type="number" name="quantity"
+                                        value="{{ $item['quantidade'] }}" min="1">
                                     <input type="hidden" name="precarrinho" value="true" min="1">
                                     <input type="hidden" name="idProduto" value="{{ $item['idProduto'] }}">
                                 </form>
