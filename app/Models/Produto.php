@@ -16,6 +16,6 @@ class Produto extends Model
         // 'tipo_id' é a coluna FK em produtos
     }
 
-    protected $fillable = ['nome', 'img', 'preco', 'colecao_id', 'descricao', 'tipoproduto_id', 'img2', 'img3', 'esgotado'];
+    protected $fillable = ['nome', 'img', 'preco', 'preco_antigo', 'colecao_id', 'descricao', 'tipoproduto_id', 'img2', 'img3', 'esgotado'];
     use HasFactory;
 }

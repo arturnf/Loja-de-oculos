@@ -89,6 +89,7 @@ main {
     padding: 8px;
     border-radius: 8px;
     position: relative;
+    height: 390px;
 }
 
 .prod-img {
@@ -186,6 +187,15 @@ main {
     font-size: 13px;
     font-weight: bold;
     color: rgb(53, 53, 53);
+}
+
+.preco_antigo {
+    font-size: 12px;
+    text-decoration: line-through;
+    font-weight: normal;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    color: rgb(128, 128, 128);
 }
 
 .esgot {

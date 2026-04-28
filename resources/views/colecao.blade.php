@@ -1,7 +1,7 @@
 @extends('base.base')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/colecao.css') }}?v=13">
+    <link rel="stylesheet" href="{{ asset('css/colecao.css') }}?v=14">
 @endsection
 
 
@@ -50,6 +50,11 @@
                         <div class="nome-produto hiddenT animate__animated">
                             <p>{{ $produto->nome }}</p>
                         </div>
+                        @if ($produto->preco_antigo)
+                            <div class="preco_antigo hiddenT animate__animated">
+                                <p>R$ {{ number_format($produto->preco_antigo, 2, ',', '.') }}</p>
+                            </div>
+                        @endif
                         <div class="preco hiddenT animate__animated">
                             <p>R$ {{ number_format($produto->preco, 2, ',', '.') }}</p>
                         </div>

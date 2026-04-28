@@ -24,9 +24,6 @@
 </head>
 
 <body @if (session('successContato')) onload = "showNotification('{{ session('successContato') }}')" @endif>
-    <div class="anuncio">
-        <h1>Cupom com 15% de desconto: eusouvip</h1>
-    </div>
     <div class="container-header">
 
         <header>

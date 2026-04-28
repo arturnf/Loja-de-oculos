@@ -125,6 +125,7 @@ main {
     position: relative;
     padding: 8px;
     border-radius: 8px;
+    height: 390px;
 }
 
 .prod-img {
@@ -160,7 +161,7 @@ main {
 }
 
 .product-button {
-    background-color:#1692a500;
+    background-color: #1692a500;
     cursor: pointer;
     width: 190px;
     border: none;
@@ -212,6 +213,15 @@ main {
     color: rgb(139, 139, 139);
 }
 
+.preco_antigo {
+    font-size: 12px;
+    text-decoration: line-through;
+    font-weight: normal;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    color: rgb(128, 128, 128);
+}
+
 
 
 
@@ -225,13 +235,13 @@ main {
     }
 
 
-    .loja{
+    .loja {
         z-index: 500;
         margin-top: 350px;
     }
 
-    .img-colecao::after{
-         background: linear-gradient(to top, #000000, #000000c4, #00000000, #ffffff00);
+    .img-colecao::after {
+        background: linear-gradient(to top, #000000, #000000c4, #00000000, #ffffff00);
     }
 
     .img-colecao .img {

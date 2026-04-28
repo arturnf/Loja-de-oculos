@@ -44,6 +44,13 @@
             </div>
 
             <div class="box-input">
+                <label for="preco_antigo">Preço antigo</label>
+                <input id="preco_antigo" type="number" name="preco_antigo" value="{{ $produto->preco_antigo }}"
+                    step="0.01" placeholder="0.00">
+            </div>
+
+
+            <div class="box-input">
                 <label for="preco">Preço</label>
                 <input id="preco" type="number" name="preco" value="{{ $produto->preco }}" step="0.01"
                     placeholder="0.00">
@@ -121,12 +128,14 @@
 
                         <div class="modal-buttons">
                             <div id="cancelar">Cancelar</div>
-                            <a href="{{ route('admin.remove.produto', ['id' => $produto->id]) }}" class="confirmar">Excluir</a>
+                            <a href="{{ route('admin.remove.produto', ['id' => $produto->id]) }}"
+                                class="confirmar">Excluir</a>
                         </div>
                     </div>
                 </div>
 
-                <a href="{{ route('lista.contatos', ['id' => $produto->id]) }}" class="showButtonContato">Ver Contatos</a>
+                <a href="{{ route('lista.contatos', ['id' => $produto->id]) }}" class="showButtonContato">Ver
+                    Contatos</a>
             </div>
         </form>
 

@@ -190,6 +190,7 @@ class ProdutoController extends Controller
             $request->validate([
                 'nome' => 'required|string|max:255',
                 'preco' => 'required|numeric',
+                'preco_antigo' => 'nullable|numeric',
                 'esgotado' => 'required',
                 'colecao' => 'required',
                 'tipo' => 'required',
@@ -199,6 +200,7 @@ class ProdutoController extends Controller
             ]);
 
             $preco = (float) $request->input('preco');
+            $preco_antigo = $request->input('preco_antigo') ? (float) $request->input('preco_antigo') : null;
 
             if ($request->hasFile('img') && $request->img->isValid()) {
                 if (File::exists($produto->img)) {
@@ -241,6 +243,7 @@ class ProdutoController extends Controller
                         'nome' => $request->nome,
                         'img' => $caminhoImagem,
                         'preco' => $preco,
+                        'preco_antigo' => $preco_antigo,
                         'colecao_id' => $request->colecao,
                         'descricao' => 'vazio',
                         'tipoproduto_id' => $request->tipo,
@@ -264,6 +267,7 @@ class ProdutoController extends Controller
                         'nome' => $request->nome,
                         'img' => $caminhoImagem,
                         'preco' => $preco,
+                        'preco_antigo' => $preco_antigo,
                         'colecao_id' => $request->colecao,
                         'descricao' => 'vazio',
                         'tipoproduto_id' => $request->tipo,
@@ -286,6 +290,7 @@ class ProdutoController extends Controller
                         'nome' => $request->nome,
                         'img' => $caminhoImagem,
                         'preco' => $preco,
+                        'preco_antigo' => $preco_antigo,
                         'colecao_id' => $request->colecao,
                         'descricao' => 'vazio',
                         'tipoproduto_id' => $request->tipo,
@@ -299,6 +304,7 @@ class ProdutoController extends Controller
                     'nome' => $request->nome,
                     'img' => $caminhoImagem,
                     'preco' => $preco,
+                    'preco_antigo' => $preco_antigo,
                     'esgotado' => $request->esgotado,
                     'tipoproduto_id' => $request->tipo
                 ]);
@@ -330,6 +336,7 @@ class ProdutoController extends Controller
                 $produto->update([
                     'nome' => $request->nome,
                     'preco' => $preco,
+                    'preco_antigo' => $preco_antigo,
                     'colecao_id' => $request->colecao,
                     'descricao' => 'vazio',
                     'tipoproduto_id' => $request->tipo,
@@ -353,6 +360,7 @@ class ProdutoController extends Controller
                 $produto->update([
                     'nome' => $request->nome,
                     'preco' => $preco,
+                    'preco_antigo' => $preco_antigo,
                     'colecao_id' => $request->colecao,
                     'descricao' => 'vazio',
                     'tipoproduto_id' => $request->tipo,
@@ -375,6 +383,7 @@ class ProdutoController extends Controller
                 $produto->update([
                     'nome' => $request->nome,
                     'preco' => $preco,
+                    'preco_antigo' => $preco_antigo,
                     'colecao_id' => $request->colecao,
                     'descricao' => 'vazio',
                     'tipoproduto_id' => $request->tipo,
@@ -386,6 +395,7 @@ class ProdutoController extends Controller
             $produto->update([
                 'nome' => $request->nome,
                 'preco' => $preco,
+                'preco_antigo' => $preco_antigo,
                 'esgotado' => $request->esgotado,
                 'colecao_id' => $request->colecao,
                 'tipoproduto_id' => $request->tipo

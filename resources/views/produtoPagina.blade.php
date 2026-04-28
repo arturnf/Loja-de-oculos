@@ -1,7 +1,7 @@
 @extends('base.base')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/produtoPagina.css') }}?v=13">
+    <link rel="stylesheet" href="{{ asset('css/produtoPagina.css') }}?v=14">
 @endsection
 
 
@@ -32,6 +32,11 @@
                     <p>apenas para região de pilar</p>
                 </div>
                 <div class="line"></div>
+                @if ($produto->preco_antigo)
+                    <div class="preco_antigo hiddenT animate__animated">
+                        <p>R$ {{ number_format($produto->preco_antigo, 2, ',', '.') }}</p>
+                    </div>
+                @endif
                 <div class="preco hiddenT animate__animated">
                     <h1>R$ {{ number_format($produto->preco, 2, ',', '.') }}</h1>
                 </div>
@@ -54,14 +59,18 @@
                         </div>
 
                         @if ($errors->has('nome'))
-                            <span class="text-danger"><p>{{ $errors->first('nome') }}</p></span>
+                            <span class="text-danger">
+                                <p>{{ $errors->first('nome') }}</p>
+                            </span>
                         @endif
                         <div class="area-input hiddenT animate__animated">
                             <input type="text" name="nome" placeholder=" " required>
                             <span class="text">Seu Nome</span>
                         </div>
                         @if ($errors->has('numero'))
-                            <span class="text-danger"><p>{{ $errors->first('numero') }}</p></span>
+                            <span class="text-danger">
+                                <p>{{ $errors->first('numero') }}</p>
+                            </span>
                         @endif
                         <div class="area-input hiddenT animate__animated">
                             <input type="text" name="numero" placeholder=" " required>

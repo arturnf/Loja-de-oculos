@@ -104,9 +104,15 @@ main {
 
 
 .preco {
-    padding-top: 10px;
     font-size: 14px;
     color: #2cbd80;
+}
+
+.preco_antigo {
+    font-size: 13px;
+    color: #919191;
+    text-decoration: line-through;
+    padding-top: 10px;
 }
 
 .estoque p {

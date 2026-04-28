@@ -1,7 +1,7 @@
 @extends('base.base')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/loja.css') }}?v=13">
+    <link rel="stylesheet" href="{{ asset('css/loja.css') }}?v=14">
 @endsection
 
 
@@ -10,12 +10,12 @@
         <div class="container-loja">
             <div class="container-titulo">
                 <div class="titulo-loja">
-                @if ($pagProduto)
-                    <h1>{{ $categoria->nome }}</h1>
-                @else
-                    <h1>Todos Os Produtos</h1>
-                @endif
-                    
+                    @if ($pagProduto)
+                        <h1>{{ $categoria->nome }}</h1>
+                    @else
+                        <h1>Todos Os Produtos</h1>
+                    @endif
+
                 </div>
                 <div class="filtros">
 
@@ -23,15 +23,18 @@
                         <a class="button" href="{{ route('loja') }}">Todos</a>
                         @foreach ($tipos as $tipo)
                             @if ($categoria->nome == $tipo->nome)
-                                <a class="button active" href="{{ route('lojaCategoria', ['id' => $tipo->id]) }}">{{ $tipo->nome }}</a>
+                                <a class="button active"
+                                    href="{{ route('lojaCategoria', ['id' => $tipo->id]) }}">{{ $tipo->nome }}</a>
                             @else
-                                <a class="button" href="{{ route('lojaCategoria', ['id' => $tipo->id]) }}">{{ $tipo->nome }}</a>
+                                <a class="button"
+                                    href="{{ route('lojaCategoria', ['id' => $tipo->id]) }}">{{ $tipo->nome }}</a>
                             @endif
                         @endforeach
                     @else
                         <a class="button active" href="{{ route('loja') }}">Todos</a>
                         @foreach ($tipos as $tipo)
-                            <a class="button" href="{{ route('lojaCategoria', ['id' => $tipo->id]) }}">{{ $tipo->nome }}</a>
+                            <a class="button"
+                                href="{{ route('lojaCategoria', ['id' => $tipo->id]) }}">{{ $tipo->nome }}</a>
                         @endforeach
                     @endif
                 </div>
@@ -69,6 +72,11 @@
                         <div class="nome-produto hiddenT animate__animated">
                             <p>{{ $produto->nome }}</p>
                         </div>
+                        @if ($produto->preco_antigo)
+                            <div class="preco_antigo hiddenT animate__animated">
+                                <p>R$ {{ number_format($produto->preco_antigo, 2, ',', '.') }}</p>
+                            </div>
+                        @endif
                         <div class="preco hiddenT animate__animated">
                             <p>R$ {{ number_format($produto->preco, 2, ',', '.') }}</p>
                         </div>
@@ -76,12 +84,10 @@
                 @endforeach
 
             </div>
-            <div class="linksPaginate"
-                {{ $produtos->links('partials.paginate') }}
+            <div class="linksPaginate" {{ $produtos->links('partials.paginate') }} </div>
             </div>
-        </div>
 
-        
+
     </main>
 @endsection
 
