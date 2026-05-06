@@ -6,7 +6,7 @@
 
 
 @section('content')
-    <div class="banner">
+    <!--<div class="banner">
         <div class="text-banner">
 
             <p>Eleve sua performance!</p>
@@ -14,6 +14,13 @@
 
         </div>
         <img class="hidden animate__animated" src="{{ asset('img/banner-main.png') }}" alt="" loading="lazy">
+    </div>-->
+
+    <div class="banner-img-desktop">
+        <img src="{{ asset('banners/teste.png') }}" alt="" loading="lazy">
+    </div>
+    <div class="banner-img-mobile">
+        <img src="{{ asset('banners/testeMobile.png') }}" alt="" loading="lazy">
     </div>
     <main>
         <div class="container-produtos">
