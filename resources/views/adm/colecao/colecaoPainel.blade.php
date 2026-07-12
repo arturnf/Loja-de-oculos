@@ -3,6 +3,7 @@
 
 @section('nav')
     <a href="{{ route('admin') }}"><i class="fa-solid fa-box-open"></i> Produtos</a>
+    <a href="{{ route('admin.banner.editar') }}"><i class="fa-solid fa-image"></i> Banner</a>
     <a href="{{ route('admin.tipos') }}"><i class="fa-solid fa-tags"></i> Categorias</a>
     <a href="{{ route('admin.colecoes') }}" class="selected"><i class="fa-solid fa-layer-group"></i> Coleções</a>
     <a href="{{ route('lista.cupons') }}"><i class="fa-solid fa-receipt"></i> Cupons</a>

@@ -27,15 +27,37 @@ class ProdutoController extends Controller
     {
         if (Auth::check()) {
 
-            $request->validate([
-                'nome' => 'required',
-                'preco' => 'required',
-                'tipo' => 'required',
-                'colecao' => 'nullable|exists:colecaos,id',
-                'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:3048', // 3MB máximo
-                'img2' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:3048', // 3MB máximo
-                'img3' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:3048', // 3MB máximo
-            ]);
+            $request->validate(
+                [
+                    'nome' => 'required',
+                    'preco' => 'required',
+                    'tipo' => 'required',
+                    'colecao' => 'nullable|exists:colecaos,id',
+                    'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:3048', // 3MB máximo
+                    'img2' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:3048', // 3MB máximo
+                    'img3' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:3048', // 3MB máximo
+                ],
+                [
+                    'nome.required' => 'O campo nome é obrigatório.',
+                    'preco.required' => 'Você precisa informar o preço.',
+                    'tipo.required' => 'Selecione o tipo do óculos.',
+                    'colecao.exists' => 'A coleção selecionada é inválida.',
+
+                 
+                    'img.required' => 'A imagem principal é obrigatória.',
+                    'img.image' => 'O arquivo enviado deve ser uma imagem válida.',
+                    'img.mimes' => 'A imagem deve ser do tipo: jpeg, png, jpg ou gif.',
+                    'img.max' => 'A imagem não pode ter mais de 3MB.',
+
+                    'img2.image' => 'A segunda imagem precisa ser um arquivo válido.',
+                    'img2.mimes' => 'A segunda imagem deve ser do tipo: jpeg, png, jpg ou gif.',
+                    'img2.max' => 'A segunda imagem não pode passar de 3MB.',
+
+                    'img3.image' => 'A terceira imagem precisa ser um arquivo válido.',
+                    'img3.mimes' => 'A terceira imagem deve ser do tipo: jpeg, png, jpg ou gif.',
+                    'img3.max' => 'A terceira imagem não pode passar de 3MB.',
+                ]
+            );
 
 
             if ($request->hasFile('img') && $request->img->isValid()) {

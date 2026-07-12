@@ -1,7 +1,7 @@
 @extends('base.base')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/colecoes.css') }}?v=13">
+    <link rel="stylesheet" href="{{ asset('css/colecoes.css') }}?v=14">
 @endsection
 
 

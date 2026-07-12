@@ -3,6 +3,7 @@
 
 @section('nav')
     <a href="{{ route('admin') }}"><i class="fa-solid fa-box-open"></i> Produtos</a>
+    <a href="{{ route('admin.banner.editar') }}"><i class="fa-solid fa-image"></i> Banner</a>
     <a href="{{ route('admin.tipos') }}"><i class="fa-solid fa-tags"></i> Categorias</a>
     <a href="{{ route('admin.colecoes') }}"><i class="fa-solid fa-layer-group"></i> Coleções</a>
     <a href="{{ route('lista.cupons') }}"><i class="fa-solid fa-receipt"></i> Cupons</a>
@@ -59,18 +60,27 @@
 
             <div class="box-input-imgs">
                 <div class="img-input">
+                    @error('img')
+                        <p class="errorRequest">{{ $message }}</p>
+                    @enderror
                     <img id="preview" src="{{ asset('img/img-form.png') }}" alt="">
                     <label class="label-file" for="fileInput">Inserir Imagem</label>
                     <input class="input-file" id="fileInput" name="img" type="file" accept="image/*">
                 </div>
 
                 <div class="img-input">
+                    @error('img2')
+                        <p class="errorRequest">{{ $message }}</p>
+                    @enderror
                     <img id="preview2" src="{{ asset('img/img-form.png') }}" alt="">
                     <label class="label-file" for="fileInput2">Inserir Imagem</label>
                     <input class="input-file" id="fileInput2" name="img2" type="file" accept="image/*">
                 </div>
 
                 <div class="img-input">
+                    @error('img3')
+                        <p class="errorRequest">{{ $message }}</p>
+                    @enderror
                     <img id="preview3" src="{{ asset('img/img-form.png') }}" alt="">
                     <label class="label-file" for="fileInput3">Inserir Imagem</label>
                     <input class="input-file" id="fileInput3" name="img3" type="file" accept="image/*">

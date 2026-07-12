@@ -6,7 +6,7 @@
     <link rel="icon" href="{{ asset('favicon.png') }}?v=13" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lisboa Company</title>
-    <link rel="stylesheet" href="{{ asset('css/base.css') }}?v=13">
+    <link rel="stylesheet" href="{{ asset('css/base.css') }}?v=14">
     @yield('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
@@ -17,13 +17,13 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@700&display=swap" rel="stylesheet">
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
-<body @if (session('successContato')) onload = "showNotification('{{ session('successContato') }}')" @endif>
+<body @if (session('successContato')) onload = "showNotification('{{ session('successContato') }}')" @endif @class(['page-header-dark' => request()->routeIs('colecao.show', 'lojaCategoria', 'pag.produto', 'loja', 'colecoes', 'contato', 'sobre')])>
     <div class="container-header">
 
         <header>
@@ -33,7 +33,7 @@
 
             <div class="logo hiddenT animate__animated">
                 <a href="{{ route('home') }}">
-                    <img src="{{ asset('img/logo.png') }}" alt="">
+                    <img src="{{ asset(request()->routeIs('home') ? 'img/LogoWhite.png' : 'img/logo.png') }}" alt="">
                 </a>
             </div>
 

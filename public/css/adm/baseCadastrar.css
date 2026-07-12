@@ -182,6 +182,14 @@
   object-position: center;
 }
 
+.errorRequest{
+  color: red;
+  font-size: 13px;
+  margin-top: 5px;
+  text-align: center;
+  max-width: 130px;
+}
+
 
 .button{
   background-color: #2463eb;

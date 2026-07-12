@@ -6,6 +6,7 @@ use App\Models\Colecao;
 use App\Models\Produto;
 use App\Models\TipoProduto;
 use App\Models\NumeroCelular;
+use App\Models\Banner;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -14,8 +15,9 @@ class MainController extends Controller
     {
 
         $categorias = TipoProduto::with('produtos')->get();
-        $colecao = Colecao::orderBy('id', 'desc')->first();
-        return view('home', ['colecao' => $colecao, 'categorias' => $categorias]);
+        $colecoes = Colecao::orderBy('id', 'desc')->take(3)->get();
+        $bannerDinamico = Banner::where('ativo', true)->first();
+        return view('home', ['colecoes' => $colecoes, 'categorias' => $categorias, 'bannerDinamico' => $bannerDinamico]);
     }
 
     public function loja()

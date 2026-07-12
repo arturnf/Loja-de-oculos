@@ -59,6 +59,8 @@ Route::put('/admin/cupom/process/{id}', [CupomController::class, 'processEditCup
 //config.painel
 Route::get('/admin/settings', [AdminController::class, 'settings'])->name('admin.config');
 Route::put('/admin/settings/process/{id}', [AdminController::class, 'editandoNumero'])->name('admin.config.process');
+Route::get('/admin/banner/editar', [AdminController::class, 'editarBanner'])->name('admin.banner.editar');
+Route::put('/admin/banner/process/{id}', [AdminController::class, 'processBanner'])->name('admin.banner.process');
 
 
 //produtos.painel

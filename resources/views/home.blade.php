@@ -1,20 +1,68 @@
 @extends('base.base')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}?v=18">
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}?v=20">
 @endsection
 
 
 @section('content')
-    <div class="banner">
-        <div class="text-banner">
+    {{-- Banner dinâmico ou banner padrão --}}
+    @if ($bannerDinamico)
+        <div class="banner banner-dinamico">
+            {{-- Banner Desktop --}}
+            @if ($bannerDinamico->img_desktop)
+                <div class="banner-desktop banner-container">
+                    <div class="banner-skeleton"></div>
+                    <a href="{{ $bannerDinamico->link ?? '#' }}" class="banner-link">
+                        <img src="{{ asset($bannerDinamico->img_desktop) }}" alt="Banner" loading="lazy" class="banner-img-loading">
+                        <div class="banner-overlay">
+                            @if ($bannerDinamico->titulo)
+                                <h2>{{ $bannerDinamico->titulo }}</h2>
+                            @endif
+                            @if ($bannerDinamico->texto)
+                                <p>{{ $bannerDinamico->texto }}</p>
+                            @endif
+                            @if ($bannerDinamico->texto_botao)
+                                <span class="banner-button">{{ $bannerDinamico->texto_botao}}</span>
+                            @endif
+                        </div>
+                    </a>
+                </div>
+            @endif
 
-            <p>Eleve sua performance!</p>
-            <a href="{{ route('colecoes') }}">Ver Coleções</a>
-
+            {{-- Banner Mobile --}}
+            @if ($bannerDinamico->img_mobile)
+                <div class="banner-mobile banner-container">
+                    <div class="banner-skeleton"></div>
+                    <a href="{{ $bannerDinamico->link ?? '#' }}" class="banner-link">
+                        <img src="{{ asset($bannerDinamico->img_mobile) }}" alt="Banner Mobile" loading="lazy" class="banner-img-loading">
+                        <div class="banner-overlay">
+                            @if ($bannerDinamico->titulo)
+                                <h2>{{ $bannerDinamico->titulo }}</h2>
+                            @endif
+                            @if ($bannerDinamico->texto)
+                                <p>{{ $bannerDinamico->texto }}</p>
+                            @endif
+                            @if ($bannerDinamico->texto_botao)
+                                <span class="banner-button">{{ $bannerDinamico->texto_botao}}</span>
+                            @endif
+                        </div>
+                    </a>
+                </div>
+            @endif
         </div>
-        <img class="hidden animate__animated" src="{{ asset('img/banner-main.png') }}" alt="" loading="lazy">
-    </div>
+    @else
+        {{-- Banner Padrão --}}
+        <div class="banner">
+            <div class="text-banner">
+
+                <p>Eleve sua performance!</p>
+                <a href="{{ route('colecoes') }}">Ver Coleções</a>
+
+            </div>
+            <img class="hidden animate__animated" src="{{ asset('img/banner-main.png') }}" alt="" loading="lazy">
+        </div>
+    @endif
     <main>
         <div class="container-produtos">
 
@@ -79,18 +127,29 @@
     <div class="colecao-rec">
         <div class="container-colec">
             <div class="titulo-container-colec">
-                <h1>Ultima Coleção Adicionada</h1>
+                <h1>Últimas coleções</h1>
+                <p>Confira as novidades mais recentes da nossa linha.</p>
             </div>
-            <div class="colec">
-                <img src="{{ asset($colecao->img) }}" alt="" loading="lazy">
-                <div class="text-colec hiddenT animate__animated">
-                    <h1>{{ $colecao->nome }}</h1>
-                    @if ($colecao->descricao)
-                        <p>{{ $colecao->descricao }}</p>
-                    @endif
-                    <a href="{{ route('colecao.show', ['id' => $colecao->id]) }}">Ver Coleção</a>
+
+            @if ($colecoes->isNotEmpty())
+                <div class="colecoes-grid">
+                    @foreach ($colecoes as $colecao)
+                        <article class="colec">
+                            <div class="colec-imagem">
+                                <img src="{{ asset($colecao->img) }}" alt="{{ $colecao->nome }}" loading="lazy">
+                            </div>
+                            <div class="text-colec">
+                                <span class="colec-chip">{{ $loop->first ? 'Destaque' : 'Novidade' }}</span>
+                                <h1>{{ $colecao->nome }}</h1>
+                                @if ($colecao->descricao)
+                                    <p>{{ $colecao->descricao }}</p>
+                                @endif
+                                <a href="{{ route('colecao.show', ['id' => $colecao->id]) }}">Ver coleção</a>
+                            </div>
+                        </article>
+                    @endforeach
                 </div>
-            </div>
+            @endif
         </div>
     </div>
 

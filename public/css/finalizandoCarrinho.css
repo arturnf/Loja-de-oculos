@@ -1,6 +1,6 @@
         * {
-            font-family: "Michroma", sans-serif;
-            font-weight: 400;
+            font-family: 'Archivo Narrow', sans-serif;
+            font-weight: 700;
             font-style: normal;
             margin: 0;
             padding: 0;
@@ -144,7 +144,7 @@
             z-index: 90;
         }
 
-        .area-input .text{
+        .area-input .text {
             position: absolute;
             font-size: 13px;
             top: 10px;
@@ -154,12 +154,12 @@
             font-weight: bold;
         }
 
-        .area-input input:focus{
+        .area-input input:focus {
             border: 1px solid green;
         }
 
-        .area-input input:focus + .text,
-        .area-input input:not(:placeholder-shown) + .text{
+        .area-input input:focus+.text,
+        .area-input input:not(:placeholder-shown)+.text {
             z-index: 100;
             color: green;
             font-size: 12px;
@@ -168,7 +168,7 @@
         }
 
 
-        
+
         .button-finalizar {
             width: 100%;
             display: flex;
@@ -176,7 +176,7 @@
             justify-content: center;
         }
 
-        .button-finalizar button{
+        .button-finalizar button {
             border: none;
             text-decoration: none;
             color: white;
@@ -195,18 +195,18 @@
             font-weight: bold;
         }
 
-        .button-finalizar button:hover{
+        .button-finalizar button:hover {
             border: 1px solid black;
             background-color: white;
             color: black;
         }
-        
 
-        .combinar a{
+
+        .combinar a {
             color: #000;
         }
 
-        .carrinho{
+        .carrinho {
             max-width: 500px;
             margin: auto;
             text-align: center;
@@ -214,7 +214,7 @@
             margin-bottom: 20px;
         }
 
-        .carrinho a{
+        .carrinho a {
             background-color: #ffffff;
             border: 1px solid black;
             width: 100%;
@@ -229,10 +229,10 @@
             transition: all 0.4s;
         }
 
-        .carrinho a:hover{
+        .carrinho a:hover {
             background-color: #cecece;
         }
 
-         .carrinho a i{
+        .carrinho a i {
             padding-top: 6px;
-         }
+        }

@@ -32,7 +32,7 @@ main {
 
 .titulo-loja h1 {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 24px;
 }
 
 .filtros {
@@ -193,7 +193,7 @@ main {
 .nome-produto {
     padding-top: 14px;
     max-width: 200px;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 
@@ -208,13 +208,13 @@ main {
 }
 
 .preco {
-    font-size: 13px;
+    font-size: 25px;
     font-weight: bold;
     color: rgb(139, 139, 139);
 }
 
 .preco_antigo {
-    font-size: 12px;
+    font-size: 16px;
     text-decoration: line-through;
     font-weight: normal;
     margin-top: 3px;
@@ -267,7 +267,7 @@ main {
     }
 
     .preco {
-        font-size: 11px;
+        font-size: 20px;
         padding-bottom: 20px;
     }
 

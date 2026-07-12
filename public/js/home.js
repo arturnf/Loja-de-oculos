@@ -73,3 +73,34 @@
     });
     observer.observe(lightbox, { attributes: true, attributeFilter: ['class'] });
 })();
+
+/* ===== BANNER SKELETON LOADER ===== */
+(function () {
+    const bannerImages = document.querySelectorAll('.banner-img-loading');
+
+    bannerImages.forEach(img => {
+        const handleLoad = () => {
+            const skeleton = img.closest('.banner-container')?.querySelector('.banner-skeleton');
+            if (skeleton) {
+                skeleton.style.display = 'none';
+            }
+            img.classList.add('banner-img-loaded');
+            img.removeEventListener('load', handleLoad);
+        };
+
+        // Se a imagem já está em cache e carregada
+        if (img.complete) {
+            handleLoad();
+        } else {
+            img.addEventListener('load', handleLoad);
+        }
+
+        // Tratamento de erro
+        img.addEventListener('error', () => {
+            const skeleton = img.closest('.banner-container')?.querySelector('.banner-skeleton');
+            if (skeleton) {
+                skeleton.style.opacity = '0.5';
+            }
+        });
+    });
+})();

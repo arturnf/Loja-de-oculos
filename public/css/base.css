@@ -1,6 +1,6 @@
 * {
-    font-family: "Michroma", sans-serif;
-    font-weight: 400;
+    font-family: 'Archivo Narrow', sans-serif;
+    font-weight: 700;
     font-style: normal;
     margin: 0;
     padding: 0;
@@ -25,16 +25,16 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: black;
+    background-color: white;
     box-shadow: #000000 0px 0px 20px 0px;
 }
 
 header {
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: white;
     width: 100%;
     max-width: 1200px;
-    height: 100px;
+    height: 70px;
     display: flex;
     justify-content: space-around;
     overflow: hidden;
@@ -49,8 +49,8 @@ header nav {
 
 header nav a {
     text-decoration: none;
-    color: rgb(180, 180, 180);
-    font-size: 13px;
+    color: black;
+    font-size: 17px;
     position: relative;
 }
 
@@ -60,7 +60,7 @@ header nav a::before {
     position: absolute;
     height: 3px;
     width: 0px;
-    background-color: white;
+    background-color: black;
     transition: 0.5s;
 }
 
@@ -75,7 +75,7 @@ header nav a::before {
 }
 
 header nav a:hover {
-    color: white;
+    color: black;
 }
 
 header nav a:hover::after,
@@ -83,6 +83,9 @@ header nav a:hover::before {
     width: 100%;
 }
 
+body.page-header-dark header nav a:hover {
+    color: white;
+}
 
 header .logo {
     display: flex;
@@ -90,7 +93,8 @@ header .logo {
 }
 
 header .logo img {
-    width: 70px;
+    padding-top: 10px;
+    width: 100px;
 }
 
 
@@ -102,8 +106,34 @@ header .cart {
 }
 
 header .cart a {
-    font-size: 20px;
+    font-size: 24px;
     text-decoration: none;
+    color: black;
+}
+
+body.page-header-dark .container-header {
+    background-color: black;
+}
+
+body.page-header-dark header {
+    color: white;
+    background-color: black;
+}
+
+body.page-header-dark header nav a {
+    color: rgb(180, 180, 180);
+}
+
+body.page-header-dark header nav a::after,
+body.page-header-dark header nav a::before {
+    background-color: white;
+}
+
+body.page-header-dark header nav a:hover {
+    color: white;
+}
+
+body.page-header-dark header .cart a {
     color: white;
 }
 
@@ -136,7 +166,7 @@ header .cart a {
 }
 
 .footer-brand {
-    font-size: 1.2rem;
+    font-size: 1.28rem;
     font-weight: 600;
     letter-spacing: 1px;
 }
@@ -162,7 +192,7 @@ header .cart a {
 .menu-mobile {
     width: 100%;
     height: 100%;
-    background-color: #000000;
+    background-color: #ffffff;
     position: fixed;
     top: 0px;
     left: -100%;
@@ -177,7 +207,7 @@ header .cart a {
     position: absolute;
     top: 20px;
     right: 20px;
-    color: white;
+    color: black;
 }
 
 
@@ -196,6 +226,18 @@ header .cart a {
 
 .menu-mobile nav a {
     text-decoration: none;
+    color: black;
+}
+
+body.page-header-dark .menu-mobile {
+    background-color: #000000;
+}
+
+body.page-header-dark .menu-mobile nav a {
+    color: white;
+}
+
+body.page-header-dark .menu-mobile .button-close {
     color: white;
 }
 
@@ -367,7 +409,7 @@ header .cart a {
 }
 
 .total-carrinho h1 {
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .finalizar {
@@ -386,7 +428,7 @@ header .cart a {
     background-color: #333;
     color: white;
     text-decoration: none;
-    font-size: 12px;
+    font-size: 14px;
     transition: all 0.4s;
 }
 
@@ -403,7 +445,7 @@ header .cart a {
 }
 
 .continuar p {
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .oculto {
@@ -472,14 +514,14 @@ header .cart a {
 
     .logo {
         position: relative;
-        margin-left: 20px;
+        margin-left: 30px;
     }
 
     .menu-hamb {
         display: block;
         height: 40px;
         position: relative;
-        top: 30px;
+        top: 16px;
         font-size: 27px;
     }
 }

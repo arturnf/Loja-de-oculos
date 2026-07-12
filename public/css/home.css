@@ -5,13 +5,13 @@
     align-items: center;
     color: white;
     gap: 40px;
-    box-shadow: black 0px 3px 30px 0px;
+    box-shadow: rgba(0, 0, 0, 0.459) 0px 20px 40px 0px;
     overflow: hidden;
 }
 
 .banner .text-banner {
     width: 330px;
-    font-size: 30px;
+    font-size: 34px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -55,7 +55,7 @@ main {
 .container-produtos {
     width: 100%;
     margin: auto;
-    max-width: 1200px;
+    max-width: 1230px;
 }
 
 .categoria {
@@ -71,7 +71,7 @@ main {
 }
 
 .categoria .titulo h4 {
-    font-size: 30px;
+    font-size: 34px;
 }
 
 .categoria .titulo a {
@@ -97,31 +97,43 @@ main {
 }
 
 .produto {
-    padding: 8px;
-    border-radius: 8px;
+    padding: 12px 12px 16px;
+    border-radius: 20px;
     position: relative;
     height: 390px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.produto:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.14);
 }
 
 .prod-img {
     width: 200px;
     height: 230px;
     overflow: hidden;
-    border-radius: 8px;
-    margin-bottom: 8px;
+    border-radius: 16px;
+    margin-bottom: 10px;
+    background: #f5f5f5;
 }
 
 .produto .prod-img img {
-    width: 200px;
-    height: 230px;
-    border-radius: 8px;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
     object-fit: cover;
     object-position: center;
     transition: transform 0.5s ease;
 }
 
 .produto .prod-img img:hover {
-    transform: scale(1.2);
+    transform: scale(1.08);
 }
 
 .esgot {
@@ -136,63 +148,68 @@ main {
 
 .produto .esgot p {
     font-weight: bold;
-    font-size: 15px;
+    font-size: 19px;
     color: rgb(255, 255, 255);
 }
 
 
 .botao-comprar {
-    background-color: #1693a5;
-    border-radius: 8px;
+    background-color: #111;
+    border-radius: 999px;
     text-align: center;
-    height: 41px;
+    height: 42px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: 0.4s;
+    margin-top: auto;
 }
 
 .product-button {
-    background-color: #1692a500;
+    background-color: transparent;
     cursor: pointer;
-    width: 190px;
+    width: 100%;
     border: none;
-    padding: 8px 36px 8px 36px;
+    padding: 8px 24px;
     text-align: center;
     text-decoration: none;
     color: rgb(255, 255, 255);
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .botao-comprar a {
-    padding: 8px 34px 8px 34px;
-    width: 190px;
+    padding: 8px 24px;
+    width: 100%;
     text-align: center;
     text-decoration: none;
     color: rgb(255, 255, 255);
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .botao-comprar:hover {
-    background-color: #16c5e0;
+    background-color: #333;
 }
 
 
 
 .nome-produto {
-    padding-top: 14px;
+    padding-top: 12px;
     max-width: 200px;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #111;
 }
 
 .preco {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: bold;
     color: rgb(53, 53, 53);
 }
 
 .preco_antigo {
-    font-size: 12px;
+    font-size: 13px;
     text-decoration: line-through;
     font-weight: normal;
     margin-top: 3px;
@@ -211,99 +228,170 @@ main {
     background-size: cover;
     background-attachment: fixed;
     width: 100%;
-    height: 850px;
+    padding: 90px 20px 70px;
     display: flex;
-    padding-bottom: 50px;
     justify-content: center;
     align-items: center;
     position: relative;
-    box-shadow: black 0px 0px 20px 0px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 24px 0px;
     z-index: 100;
 }
 
 .colecao-rec::after {
     content: "";
-    background-color: rgba(0, 0, 0, 0.877);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.78) 100%);
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0px;
 }
 
-
 .container-colec {
     position: relative;
     z-index: 100;
     width: 100%;
-    height: 100%;
+    max-width: 1200px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow-y: hidden;
 }
 
-
 .titulo-container-colec {
-    position: absolute;
-    top: 50px;
     color: white;
     text-align: center;
+    margin-bottom: 28px;
+}
+
+.titulo-container-colec h1 {
+    font-size: 2rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.titulo-container-colec p {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.95rem;
+}
+
+.colecoes-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
 }
 
 .colec {
-    border-radius: 8px;
-    position: relative;
-    padding-top: 100px;
-    height: 90%;
-    position: relative;
+    border-radius: 22px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.24);
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
 }
 
+.colec-imagem {
+    height: 260px;
+    overflow: hidden;
+}
 
-.container-colec .colec img {
-    border-radius: 8px;
-    width: 400px;
-    height: 500px;
+.container-colec .colec-imagem img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     object-position: center;
+    display: block;
 }
 
 .text-colec {
-    border-radius: 20px;
     color: white;
-    padding-left: 20px;
-    padding-right: 20px;
-    position: absolute;
-    bottom: 30px;
-    left: -100px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.colec-chip {
+    display: inline-block;
+    width: fit-content;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 0.74rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
 }
 
 .text-colec h1 {
-    font-size: 40px;
-    padding-bottom: 20px;
+    font-size: 1.35rem;
+    line-height: 1.2;
 }
 
 .text-colec p {
-    padding-bottom: 20px;
-    font-size: 0.80rem;
-    color: rgb(184, 184, 184);
+    font-size: 0.91rem;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .text-colec a {
-    padding: 8px 16px 8px 16px;
-    background-color: #1693a5;
+    display: inline-block;
+    width: fit-content;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, #1693a5 0%, #16c5e0 100%);
     color: white;
     text-decoration: none;
-    margin-top: 100px;
-    border-radius: 8px;
-    transition: 0.5s;
+    border-radius: 999px;
+    transition: 0.3s ease;
+    margin-top: 6px;
+    font-weight: 600;
 }
 
 .text-colec a:hover {
-    background-color: #16c5e0;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(22, 147, 165, 0.28);
+}
 
+@media (max-width: 900px) {
+    .colecoes-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .colecao-rec {
+        padding: 70px 14px 50px;
+    }
+
+    .colecoes-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 14px;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .colecoes-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .colec {
+        min-width: 82vw;
+        max-width: 82vw;
+        scroll-snap-align: start;
+    }
+
+    .colec-imagem {
+        height: 220px;
+    }
+
+    .titulo-container-colec h1 {
+        font-size: 1.6rem;
+    }
 }
 
 
@@ -324,7 +412,7 @@ main {
 
 
 .container {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
     overflow: auto;
 }
@@ -339,13 +427,13 @@ main {
     font-weight: 600;
     letter-spacing: 0.2px;
     margin: 0;
-    font-size: 2.05rem;
+    font-size: 2.13rem;
 }
 
 .sub {
     margin-top: 8px;
     color: #666;
-    font-size: 0.95rem;
+    font-size: 1.01rem;
 }
 
 /* Grid */
@@ -438,7 +526,7 @@ main {
 }
 
 .phone img {
-    width: 100%;
+    width: 300px;
     height: auto;
     display: block;
     border-radius: 8px;
@@ -569,8 +657,7 @@ main {
 
     .container-colec .colec img {
         border-radius: 8px;
-        width: 95%;
-        height: 500px;
+        height: 300px;
         object-fit: cover;
         object-position: center;
     }
@@ -622,4 +709,168 @@ main {
     .categoria .titulo a {
         font-size: 15px;
     }
+}
+
+/* ===== BANNER DINÂMICO ===== */
+.banner-dinamico {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.banner-desktop,
+.banner-mobile {
+    width: 100%;
+    display: none;
+}
+
+.banner-dinamico .banner-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.banner-dinamico img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.banner-dinamico .banner-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    padding: 0 32px 100px;
+    color: #fff;
+    z-index: 2;
+}
+
+.banner-dinamico .banner-overlay h2 {
+    font-size: 2rem;
+    margin: 0 0 10px;
+    line-height: 1.1;
+    width: min(100%, 460px);
+    max-width: 460px;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+.banner-dinamico .banner-overlay p {
+    font-size: 1rem;
+    margin: 0 0 16px;
+    width: min(100%, 420px);
+    max-width: 420px;
+    line-height: 1.5;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+.banner-dinamico .banner-overlay .banner-button {
+    display: inline-block;
+    background-color: #fff;
+    color: #111;
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+
+@media (max-width: 1191px) {
+    .banner-dinamico .banner-desktop .banner-link img {
+        height: 400px;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+/* Desktop - Mostrar apenas desktop */
+@media (min-width: 748px) {
+    .banner-desktop {
+        display: block !important;
+    }
+
+    .banner-mobile {
+        display: none !important;
+    }
+}
+
+/* Mobile - Mostrar apenas mobile */
+@media (max-width: 747px) {
+    .banner-desktop {
+        display: none !important;
+    }
+
+    .banner-mobile {
+        display: block !important;
+    }
+
+    .banner-dinamico .banner-mobile .banner-link {
+        display: block;
+        width: 100%;
+        height: calc(90vh - 90px);
+        min-height: calc(90vh - 90px);
+        overflow: hidden;
+    }
+
+    .banner-dinamico .banner-mobile .banner-link img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: bottom;
+        display: block;
+    }
+}
+
+/* Animações para banner dinâmico */
+.banner-dinamico img {
+    transition: transform 0.3s ease;
+}
+
+.banner-dinamico .banner-link:hover img {
+    transform: scale(1.02);
+}
+
+/* ===== SKELETON LOADER ===== */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.banner-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-skeleton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #949494 25%, #8b8b8b 50%, #8a8a8a 75%);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+    z-index: 1;
+}
+
+.banner-img-loading {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.banner-img-loaded {
+    opacity: 1;
 }
